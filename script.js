@@ -192,5 +192,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
         quoteWrapper.addEventListener('mouseenter', triggerTypewriter);
         quoteWrapper.addEventListener('mouseleave', resetQuote);
+
+        // Pemicu otomatis sekali saat pertama kali di-scroll ke area pandang (viewport)
+        let hasTypedOnScroll = false;
+        const typewriterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !hasTypedOnScroll) {
+                    hasTypedOnScroll = true;
+                    // Beri sedikit jeda agar transisi fade-in selesai terlebih dahulu
+                    setTimeout(triggerTypewriter, 300);
+                    typewriterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        typewriterObserver.observe(quoteWrapper);
     }
 });
