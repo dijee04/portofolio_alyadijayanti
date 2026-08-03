@@ -2,31 +2,39 @@
    DESAIN SISTEM & VARIABEL
    ========================================================================== */
 :root {
-    --bg-color: #FAF8F5;       /* Krem hangat */
-    --text-color: #111111;     /* Hitam karbon */
-    --text-muted: #555555;     /* Abu-abu teks tambahan */
-    --border-color: #111111;   /* Warna garis brutalist */
-    --accent-color: #E63946;   /* Merah aksen */
+    --bg-color: #FFF8E7;       /* Cosmic Latte */
+    --text-color: #260201;     /* Sangria sangat gelap untuk keterbacaan teks */
+    --text-muted: #6B5554;     /* Abu-abu kemerahan hangat */
+    --border-color: rgba(147, 5, 0, 0.15); /* Sangria transparan halus */
+    --accent-color: #95BBEA;   /* Cornflower Blue */
+    --secondary-color: #930500; /* Sangria */
     
-    /* Warna Proyek */
-    --teal-project: #0D9488;
-    --purple-project: #7C3AED;
-    --pink-project: #EC4899;
-    --blue-project: #2563EB;
-    --green-project: #064E3B;
+    /* Warna Proyek (Disesuaikan agar serasi dengan nuansa glassy) */
+    --teal-project: rgba(13, 148, 136, 0.7);
+    --purple-project: rgba(124, 58, 237, 0.7);
+    --pink-project: rgba(236, 72, 153, 0.7);
+    --blue-project: rgba(37, 99, 235, 0.7);
+    --green-project: rgba(6, 78, 59, 0.7);
     
-    /* Tema Gelap (Kartu & Footer) */
-    --bg-dark: #121212;
-    --text-light: #FAF8F5;
-    --border-light: rgba(250, 248, 245, 0.2);
+    /* Glassmorphism Variables */
+    --card-bg: rgba(255, 255, 255, 0.45);
+    --card-border: rgba(255, 255, 255, 0.5);
+    --glass-blur: 16px;
+    --shadow-soft: 0 12px 40px 0 rgba(147, 5, 0, 0.06);
+    --shadow-hover: 0 20px 50px 0 rgba(147, 5, 0, 0.12);
+    
+    /* Tema Gelap (Disesuaikan agar tetap selaras dengan palet hangat) */
+    --bg-dark: #2B0706;        /* Sangria super gelap */
+    --text-light: #FFF8E7;     /* Cosmic Latte */
+    --border-light: rgba(255, 248, 231, 0.15);
     
     /* Font */
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Inter', sans-serif;
     
     /* Transisi */
-    --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-fast: 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+    --transition-smooth: 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 /* Reset Dasar */
@@ -48,6 +56,39 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+    position: relative;
+    z-index: 0;
+}
+
+/* Bulatan Cairan Latar Belakang (Fluid Blobs) */
+body::before {
+    content: '';
+    position: absolute;
+    width: 60vw;
+    height: 60vw;
+    max-width: 800px;
+    max-height: 800px;
+    background: radial-gradient(circle, rgba(149, 187, 234, 0.22) 0%, rgba(255, 248, 231, 0) 70%);
+    top: -10vw;
+    left: -10vw;
+    filter: blur(80px);
+    z-index: -2;
+    pointer-events: none;
+}
+
+body::after {
+    content: '';
+    position: absolute;
+    width: 70vw;
+    height: 70vw;
+    max-width: 900px;
+    max-height: 900px;
+    background: radial-gradient(circle, rgba(147, 5, 0, 0.05) 0%, rgba(255, 248, 231, 0) 70%);
+    top: 60vh;
+    right: -20vw;
+    filter: blur(100px);
+    z-index: -2;
+    pointer-events: none;
 }
 
 /* Tipografi Global */
@@ -76,10 +117,10 @@ button, input, textarea {
     left: 0;
     width: 100%;
     z-index: 100;
-    background-color: rgba(250, 248, 245, 0.85);
+    background-color: rgba(255, 248, 231, 0.7);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1.5px solid var(--border-color);
+    border-bottom: 1px solid var(--card-border);
     transition: var(--transition-fast);
 }
 
@@ -100,6 +141,7 @@ button, input, textarea {
     letter-spacing: -0.05em;
     cursor: pointer;
     position: relative;
+    color: var(--secondary-color);
 }
 
 .nav-menu {
@@ -122,7 +164,7 @@ button, input, textarea {
     left: 0;
     width: 0%;
     height: 1.5px;
-    background-color: var(--text-color);
+    background-color: var(--secondary-color);
     transition: var(--transition-fast);
 }
 
@@ -134,16 +176,18 @@ button, input, textarea {
     font-weight: 600;
     font-size: 0.9rem;
     padding: 0.6rem 1.5rem;
-    border: 1.5px solid var(--border-color);
+    border: 1px solid var(--secondary-color);
     border-radius: 50px;
     background-color: transparent;
     transition: var(--transition-fast);
+    color: var(--secondary-color);
 }
 
 .nav-btn:hover {
-    background-color: var(--text-color);
+    background-color: var(--secondary-color);
     color: var(--bg-color);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(147, 5, 0, 0.2);
 }
 
 /* ==========================================================================
@@ -228,16 +272,16 @@ button, input, textarea {
     width: 160px;
     height: 160px;
     border-radius: 20px;
-    border: 2px solid var(--border-color);
+    border: 1px solid var(--card-border);
     overflow: hidden;
     background-color: var(--accent-color);
-    box-shadow: 6px 6px 0px var(--border-color);
+    box-shadow: var(--shadow-soft);
     transition: var(--transition-smooth);
 }
 
 .avatar-wrapper:hover {
-    transform: translate(-3px, -3px);
-    box-shadow: 9px 9px 0px var(--border-color);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
 }
 
 .avatar-img {
@@ -416,16 +460,16 @@ button, input, textarea {
     width: 100%;
     height: 380px;
     border-radius: 28px;
-    border: 2px solid var(--border-color);
+    border: 1px solid var(--card-border);
     overflow: hidden;
     background-color: var(--accent-color);
-    box-shadow: 8px 8px 0px var(--border-color);
+    box-shadow: var(--shadow-soft);
     transition: var(--transition-smooth);
 }
 
 .photo-img-wrapper:hover {
-    transform: translate(-4px, -4px);
-    box-shadow: 12px 12px 0px var(--border-color);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
 }
 
 .photo-img {
@@ -462,15 +506,18 @@ button, input, textarea {
     font-size: 1.1rem;
     font-weight: 700;
     padding: 0.8rem 2rem;
-    border: 1.5px solid var(--border-color);
+    border: 1px solid var(--secondary-color);
     border-radius: 50px;
     background-color: transparent;
     transition: var(--transition-fast);
+    color: var(--secondary-color);
 }
 
 .intro-cta:hover {
-    background-color: var(--text-color);
+    background-color: var(--secondary-color);
     color: var(--bg-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(147, 5, 0, 0.2);
 }
 
 .intro-cta .arrow {
@@ -611,17 +658,21 @@ button, input, textarea {
     font-weight: 700;
     font-size: 1rem;
     padding: 0.8rem 1.8rem;
-    border: 1.5px solid var(--border-color);
+    border: 1px solid var(--secondary-color);
     border-radius: 50px;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     transition: var(--transition-fast);
+    color: var(--secondary-color);
+    background-color: transparent;
 }
 
 .section-link-btn:hover {
-    background-color: var(--text-color);
+    background-color: var(--secondary-color);
     color: var(--bg-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(147, 5, 0, 0.2);
 }
 
 .section-link-btn:hover .arrow {
@@ -637,17 +688,19 @@ button, input, textarea {
 .project-card {
     display: flex;
     flex-direction: column;
-    border: 1.5px solid var(--border-color);
-    border-radius: 24px;
+    border: 1px solid var(--card-border);
+    border-radius: 28px;
     overflow: hidden;
     transition: var(--transition-smooth);
-    background-color: #ffffff;
-    box-shadow: 8px 8px 0px var(--border-color);
+    background-color: var(--card-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    box-shadow: var(--shadow-soft);
 }
 
 .project-card:hover {
-    transform: translate(-4px, -4px);
-    box-shadow: 12px 12px 0px var(--border-color);
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
 }
 
 .project-image-container {
@@ -655,7 +708,7 @@ button, input, textarea {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-bottom: 1.5px solid var(--border-color);
+    border-bottom: 1px solid var(--card-border);
     overflow: hidden;
     height: 380px;
     transition: var(--transition-smooth);
@@ -666,7 +719,7 @@ button, input, textarea {
     max-height: 100%;
     object-fit: contain;
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 30px rgba(147, 5, 0, 0.15);
     transition: var(--transition-smooth);
 }
 
@@ -690,7 +743,7 @@ button, input, textarea {
     .project-card.wide .project-image-container {
         width: 60%;
         border-bottom: none;
-        border-right: 1.5px solid var(--border-color);
+        border-right: 1px solid var(--card-border);
         height: 400px;
     }
     .project-card.wide .project-info {
@@ -704,7 +757,7 @@ button, input, textarea {
 
 .project-info {
     padding: 2rem;
-    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 .project-title {
@@ -913,8 +966,8 @@ button, input, textarea {
 }
 
 .thought-card {
-    border: 1.5px solid var(--border-color);
-    border-radius: 24px;
+    border: 1px solid var(--card-border);
+    border-radius: 28px;
     height: 420px;
     overflow: hidden;
     display: flex;
@@ -923,11 +976,15 @@ button, input, textarea {
     padding: 2.5rem;
     transition: var(--transition-smooth);
     position: relative;
+    background-color: var(--card-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    box-shadow: var(--shadow-soft);
 }
 
 .thought-card:hover {
-    transform: translate(-3px, -3px);
-    box-shadow: 6px 6px 0px var(--border-color);
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
 }
 
 /* Kartu dengan gambar background */
@@ -989,9 +1046,12 @@ button, input, textarea {
 
 /* Kartu Solid (Call to action) */
 .solid-card {
-    background-color: var(--bg-dark);
+    background-color: rgba(43, 7, 6, 0.9);
     color: var(--text-light);
     justify-content: center;
+    border: 1px solid rgba(255, 248, 231, 0.15);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
 }
 
 .solid-card-inner {
@@ -1088,12 +1148,15 @@ button, input, textarea {
 
 /* Form Styling */
 .form-container {
-    background-color: var(--bg-dark);
+    background-color: rgba(43, 7, 6, 0.85);
     color: var(--text-light);
-    border: 1.5px solid var(--border-color);
-    border-radius: 24px;
+    border: 1px solid rgba(255, 248, 231, 0.15);
+    border-radius: 28px;
     padding: 3rem;
-    box-shadow: 8px 8px 0px var(--border-color);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition-smooth);
 }
 
 .contact-form {
@@ -1139,9 +1202,9 @@ button, input, textarea {
 
 .submit-btn {
     align-self: flex-start;
-    background-color: var(--text-light);
-    color: var(--bg-dark);
-    border: 1.5px solid var(--border-color);
+    background-color: var(--secondary-color);
+    color: var(--text-light);
+    border: 1px solid rgba(255, 248, 231, 0.15);
     border-radius: 50px;
     padding: 1rem 2.5rem;
     font-size: 1rem;
@@ -1152,9 +1215,9 @@ button, input, textarea {
 
 .submit-btn:hover {
     background-color: var(--accent-color);
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(230, 57, 70, 0.3);
+    color: var(--bg-dark);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(149, 187, 234, 0.25);
 }
 
 .form-feedback {
@@ -1457,23 +1520,25 @@ button, input, textarea {
     font-weight: 700;
     font-size: 1rem;
     padding: 0.6rem 1.5rem;
-    border: 1.5px solid var(--border-color);
+    border: 1px solid var(--border-color);
     border-radius: 50px;
-    background-color: transparent;
+    background-color: var(--card-bg);
     cursor: pointer;
     transition: var(--transition-fast);
+    color: var(--text-color);
 }
 
 .filter-btn:hover {
-    background-color: var(--text-color);
+    background-color: var(--secondary-color);
     color: var(--bg-color);
     transform: translateY(-2px);
 }
 
 .filter-btn.active {
-    background-color: var(--text-color);
+    background-color: var(--secondary-color);
     color: var(--bg-color);
-    box-shadow: 4px 4px 0px var(--border-color);
+    box-shadow: 0 4px 15px rgba(147, 5, 0, 0.2);
+    border-color: var(--secondary-color);
 }
 
 /* Transisi Galeri */
@@ -1492,19 +1557,21 @@ button, input, textarea {
     font-weight: 700;
     font-size: 0.9rem;
     padding: 0.6rem 1.5rem;
-    border: 1.5px solid var(--border-color);
+    border: 1px solid var(--secondary-color);
     border-radius: 50px;
     background-color: transparent;
     transition: var(--transition-fast);
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
+    color: var(--secondary-color);
 }
 
 .back-btn:hover {
-    background-color: var(--text-color);
+    background-color: var(--secondary-color);
     color: var(--bg-color);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 15px rgba(147, 5, 0, 0.2);
+    transform: translateY(-2px);
 }
 
 .back-btn .arrow-left {
