@@ -11,9 +11,9 @@
     --color-bg-dark-card: #121216;
     --color-bg-dark-hover: #1a1a20;
 
-    --color-neon-green: #00ff66;
-    --color-neon-green-glow: rgba(0, 255, 102, 0.35);
-    --color-neon-green-dark: #00cc52;
+    --color-neon-green: #fe5d9f;
+    --color-neon-green-glow: rgba(254, 93, 159, 0.35);
+    --color-neon-green-dark: #0998A1;
 
     --color-text-dark: #0f172a;
     --color-text-muted: #64748b;
@@ -22,7 +22,7 @@
 
     --color-border-light: #e2e8f0;
     --color-border-dark: #22222a;
-    --color-border-neon: rgba(0, 255, 102, 0.4);
+    --color-border-neon: rgba(254, 93, 159, 0.4);
 
     /* Fonts */
     --font-heading: 'Outfit', 'Space Grotesk', sans-serif;
@@ -138,10 +138,10 @@ img {
 }
 
 .highlight-green {
-    background: linear-gradient(120deg, rgba(0,255,102,0.3) 0%, rgba(0,255,102,0.6) 100%);
+    background: linear-gradient(120deg, rgba(254, 93, 159, 0.25) 0%, rgba(246, 134, 189, 0.5) 100%);
     padding: 2px 10px;
     border-radius: var(--radius-sm);
-    color: #052e16;
+    color: #5e0b35;
     font-weight: 800;
 }
 
@@ -333,7 +333,7 @@ img {
     position: absolute;
     z-index: 1; /* Di belakang tulisan ALYA DIJAYANTI (z-index: 5) */
     pointer-events: auto;
-    cursor: pointer;
+    cursor: grab;
     opacity: 0;
     top: 42% !important;
     left: 50% !important;
@@ -346,6 +346,86 @@ img {
                 bottom 0.95s cubic-bezier(0.34, 1.56, 0.64, 1),
                 opacity 0.6s ease-out,
                 transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* State: sedang menahan (hold) sebelum drag aktif */
+.floating-pixel-decor.is-holding {
+    cursor: wait !important;
+    z-index: 30 !important;
+}
+
+/* Ring indikator yang tumbuh saat holding */
+.floating-pixel-decor.is-holding::before {
+    content: '';
+    position: absolute;
+    inset: -10px;
+    border: 2.5px solid #fe5d9f;
+    border-radius: 50%;
+    opacity: 0;
+    animation: holdRingGrow 0.32s cubic-bezier(0.2, 0.8, 0.6, 1) forwards;
+    pointer-events: none;
+}
+
+@keyframes holdRingGrow {
+    0%   { opacity: 0;   transform: scale(0.5); }
+    60%  { opacity: 1;   transform: scale(1.1); }
+    100% { opacity: 0.8; transform: scale(1.0); border-color: #0998A1; }
+}
+
+/* State: sedang di-drag aktif */
+.floating-pixel-decor.is-dragging {
+    cursor: grabbing !important;
+    z-index: 50 !important;
+    transition: none !important;
+}
+
+/* Kelas ini ditambahkan saat elemen pertama kali di-drag.
+   Spesifisitas dinaikkan dengan :is(section) agar mengoverride
+   .hero-section.burst-active .decor-* yang memiliki spesifisitas 3 class. */
+:is(section, div).hero-section .floating-pixel-decor.is-dragged,
+.hero-section .floating-pixel-decor.is-dragged {
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    transition-delay: 0s !important;
+}
+
+/* Saat sedang di-drag aktif, matikan semua transisi CSS */
+:is(section, div).hero-section .floating-pixel-decor.is-dragged.is-dragging,
+.hero-section .floating-pixel-decor.is-dragged.is-dragging {
+    transition: none !important;
+}
+
+/* Tooltip petunjuk drag yang muncul saat hover */
+.floating-pixel-decor::after {
+    content: attr(data-drag-hint);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    background: rgba(10, 10, 12, 0.85);
+    backdrop-filter: blur(8px);
+    color: #fe5d9f;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 4px 10px;
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(254, 93, 159, 0.3);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.floating-pixel-decor:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
 }
 
 .pixel-asset {
@@ -355,16 +435,17 @@ img {
     image-rendering: crisp-edges;
     filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.08));
     transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.35s ease;
+    pointer-events: none; /* Drag ditangani parent */
 }
 
 /* Reaksi animasi ceria & memantul saat di-hover kursor */
-.floating-pixel-decor:hover {
+.floating-pixel-decor:not(.is-dragging):hover {
     z-index: 20 !important;
 }
 
-.floating-pixel-decor:hover .pixel-asset {
+.floating-pixel-decor:not(.is-dragging):hover .pixel-asset {
     transform: scale(1.42) translateY(-12px) rotate(12deg);
-    filter: drop-shadow(0 14px 28px rgba(0, 255, 102, 0.7)) drop-shadow(0 0 12px var(--color-neon-green));
+    filter: drop-shadow(0 14px 28px rgba(254, 93, 159, 0.7)) drop-shadow(0 0 12px var(--color-neon-green));
     animation: hoverPulse 0.5s ease-in-out infinite alternate;
 }
 
@@ -504,7 +585,7 @@ img {
     transform: translateX(-50%);
     width: 600px;
     height: 400px;
-    background: radial-gradient(circle, rgba(0, 255, 102, 0.15) 0%, rgba(247, 248, 250, 0) 70%);
+    background: radial-gradient(circle, rgba(241, 228, 243, 0.6) 0%, rgba(247, 248, 250, 0) 70%);
     pointer-events: none;
 }
 
@@ -554,9 +635,9 @@ img {
 }
 
 .hero-name-outlined {
-    font-family: var(--font-heading);
+    font-family: "Rubik Iso", var(--font-heading);
     font-size: clamp(3.5rem, 9vw, 7.5rem);
-    font-weight: 900;
+    font-weight: 400;
     letter-spacing: -2px;
     -webkit-text-stroke: 2px var(--color-text-dark);
     color: transparent;
@@ -657,7 +738,7 @@ img {
     letter-spacing: 2px;
 }
 
-.row-green {
+.row-pink {
     background-color: var(--color-neon-green);
     color: #000000;
     font-family: var(--font-heading);
@@ -781,7 +862,7 @@ img {
     position: absolute;
     top: 14px;
     right: 14px;
-    background: rgba(0, 255, 102, 0.95);
+    background: rgba(254, 93, 159, 0.95);
     color: #000000;
     font-size: 0.8rem;
     font-weight: 800;
@@ -1064,7 +1145,7 @@ img {
     font-size: 0.7rem;
     font-weight: 700;
     color: var(--color-neon-green);
-    background: rgba(0, 255, 102, 0.1);
+    background: rgba(254, 93, 159, 0.1);
     padding: 2px 8px;
     border-radius: 4px;
 }
@@ -1346,7 +1427,7 @@ img {
 }
 
 .tech-badge:hover {
-    background: rgba(0, 255, 102, 0.15);
+    background: rgba(254, 93, 159, 0.15);
     border-color: var(--color-neon-green);
     color: var(--color-neon-green);
     transform: translateY(-2px);
@@ -1482,7 +1563,7 @@ img {
     font-weight: 700;
 }
 
-.pulse-green {
+.pulse-accent {
     width: 6px;
     height: 6px;
     background: var(--color-neon-green);
@@ -1505,10 +1586,10 @@ img {
 }
 
 .heatmap-cell.level-0 { background: #1a1a22; }
-.heatmap-cell.level-1 { background: #004d1f; }
-.heatmap-cell.level-2 { background: #008033; }
-.heatmap-cell.level-3 { background: #00b347; }
-.heatmap-cell.level-4 { background: #00ff66; box-shadow: 0 0 6px var(--color-neon-green-glow); }
+.heatmap-cell.level-1 { background: #4a182f; }
+.heatmap-cell.level-2 { background: #862c55; }
+.heatmap-cell.level-3 { background: #c2447b; }
+.heatmap-cell.level-4 { background: #fe5d9f; box-shadow: 0 0 6px var(--color-neon-green-glow); }
 
 .heatmap-footer {
     display: flex;
@@ -1532,10 +1613,10 @@ img {
 }
 
 .legend-cells .level-0 { background: #1a1a22; }
-.legend-cells .level-1 { background: #004d1f; }
-.legend-cells .level-2 { background: #008033; }
-.legend-cells .level-3 { background: #00b347; }
-.legend-cells .level-4 { background: #00ff66; }
+.legend-cells .level-1 { background: #4a182f; }
+.legend-cells .level-2 { background: #862c55; }
+.legend-cells .level-3 { background: #c2447b; }
+.legend-cells .level-4 { background: #fe5d9f; }
 
 /* ==========================================================================
    9. Seksi 6: Kapabilitas Teknis (Latar Terang & Kartu Gelap Khusus)
@@ -1641,9 +1722,171 @@ img {
 }
 
 .tags-dark span {
-    background: rgba(0, 255, 102, 0.15) !important;
+    background: rgba(254, 93, 159, 0.15) !important;
     color: var(--color-neon-green) !important;
 }
+
+/* ====================================================
+   KAPABILITAS V2 — 4 Kartu Modern Pastel Premium
+   ==================================================== */
+
+/* Grid 4-kolom penuh */
+.cap-grid-4 {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 24px !important;
+}
+
+/* Kartu V2 override — lebih tinggi, lebih premium */
+.cap-card-v2 {
+    border-radius: 24px !important;
+    padding: 32px 28px 28px !important;
+    min-height: 360px !important;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05) !important;
+    border: 1.5px solid rgba(0, 0, 0, 0.06) !important;
+    background: #ffffff;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.3s ease !important;
+}
+
+/* Latar pastel lembut per-kartu via nth-child */
+.cap-grid-4 > .cap-card-v2:nth-child(1) {
+    background: linear-gradient(145deg, #fff8fc 0%, #ffeef6 100%);
+    border-color: rgba(254, 93, 159, 0.15) !important;
+}
+
+.cap-grid-4 > .cap-card-v2:nth-child(3) {
+    background: linear-gradient(145deg, #f8f4ff 0%, #ede8ff 100%);
+    border-color: rgba(139, 92, 246, 0.15) !important;
+}
+
+.cap-grid-4 > .cap-card-v2:nth-child(4) {
+    background: linear-gradient(145deg, #f0fbff 0%, #e0f5ff 100%);
+    border-color: rgba(9, 152, 161, 0.15) !important;
+}
+
+.cap-card-v2:hover {
+    transform: translateY(-10px) scale(1.02) !important;
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Dekorasi pixel art di pojok kanan bawah kartu */
+.cap-strawberry-decor {
+    position: absolute;
+    bottom: 14px;
+    right: 16px;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0.18;
+    transform: rotate(12deg) scale(0.95);
+}
+
+.cap-pixel-img {
+    width: 56px;
+    height: auto;
+    display: block;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.12));
+}
+
+.cap-card-v2:hover .cap-strawberry-decor {
+    opacity: 0.65;
+    transform: rotate(3deg) scale(1.15);
+}
+
+.cap-card-v2:hover .cap-pixel-img {
+    filter: drop-shadow(0 8px 16px rgba(254, 93, 159, 0.5));
+}
+
+/* Kartu gelap — pixel art lebih terang */
+.cap-card-v2.card-dark-accent .cap-strawberry-decor {
+    opacity: 0.28;
+}
+
+.cap-card-v2.card-dark-accent:hover .cap-strawberry-decor {
+    opacity: 0.7;
+}
+
+.cap-card-v2.card-dark-accent:hover .cap-pixel-img {
+    filter: drop-shadow(0 8px 20px rgba(254, 93, 159, 0.7));
+}
+
+/* Icon di kartu v2 — lebih besar dan di kanan atas */
+.cap-icon-v2 {
+    font-size: 2rem;
+    line-height: 1;
+}
+
+/* Judul v2 — rounded, friendly typography */
+.cap-title-v2 {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--color-text-dark);
+    margin: 16px 0 12px;
+    line-height: 1.25;
+    letter-spacing: -0.3px;
+}
+
+.cap-title-v2.text-white {
+    color: #ffffff !important;
+}
+
+/* Tags v2 — pill dengan warna pink lembut */
+.cap-tags-v2 {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: auto;
+}
+
+.cap-tags-v2 span {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 700;
+    background: rgba(254, 93, 159, 0.1);
+    color: #c4427a;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(254, 93, 159, 0.2);
+    transition: background 0.2s ease;
+}
+
+.cap-card-v2:hover .cap-tags-v2 span {
+    background: rgba(254, 93, 159, 0.18);
+}
+
+/* Tags v2 di kartu gelap */
+.cap-tags-v2.tags-dark span {
+    background: rgba(254, 93, 159, 0.18) !important;
+    color: #fe5d9f !important;
+    border-color: rgba(254, 93, 159, 0.3) !important;
+}
+
+/* Kartu gelap v2 — warna teal yang lebih gelap */
+.cap-card-v2.card-dark-accent {
+    background: linear-gradient(145deg, #0d0d14 0%, #130d1e 100%) !important;
+    border: 1.5px solid rgba(254, 93, 159, 0.4) !important;
+    box-shadow: 0 12px 40px rgba(254, 93, 159, 0.15),
+                0 4px 16px rgba(0, 0, 0, 0.3) !important;
+}
+
+.cap-card-v2.card-dark-accent:hover {
+    box-shadow: 0 24px 60px rgba(254, 93, 159, 0.25),
+                0 8px 24px rgba(0, 0, 0, 0.4) !important;
+}
+
+.cap-card-v2.card-dark-accent .cap-strawberry-decor {
+    filter: saturate(1);
+    opacity: 0.2;
+}
+
+.cap-card-v2.card-dark-accent:hover .cap-strawberry-decor {
+    opacity: 0.5;
+}
+
 
 /* ==========================================================================
    10. Seksi 7: Mari Terhubung & Footer (Latar Gelap / Hitam)
@@ -1814,7 +2057,7 @@ img {
 }
 
 .form-feedback.success {
-    background: rgba(0, 255, 102, 0.15);
+    background: rgba(254, 93, 159, 0.15);
     color: var(--color-neon-green);
     border: 1px solid var(--color-neon-green);
 }
