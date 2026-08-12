@@ -4,371 +4,835 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alya Dijayanti — Software Developer & UI/UX Specialist</title>
+    <title>Alya Dijayanti — Software Developer & AI Specialist</title>
     <meta name="description"
-        content="Portofolio profesional Alya Dijayanti, Software Developer yang berfokus pada pengembangan produk digital bersih, terukur, dan berkinerja tinggi.">
+        content="Portofolio profesional Alya Dijayanti, Software Developer yang berfokus pada pengembangan produk digital bersih, terukur, dan cerdas.">
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;700;900&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;700;900&family=Space+Grotesk:wght@500;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=1.3">
+    
+    <link rel="stylesheet" href="style.css?v=2.0">
 </head>
 
 <body>
 
-    <!-- Navigasi / Header Atas -->
+    <!-- 1. Header / Navigasi Melayang -->
     <header class="top-nav">
         <div class="nav-container">
-            <div class="nav-brand">Alya</div>
-            <nav class="nav-menu">
-                <a href="#layanan" class="nav-link">Layanan</a>
-                <a href="proyek.html" class="nav-link">Proyek</a>
-                <a href="#prestasi" class="nav-link">Pencapaian</a>
-                <a href="#pemikiran" class="nav-link">Pemikiran</a>
-                <a href="#kontak" class="nav-btn">Mari Bicara</a>
+            <a href="#" class="nav-brand">
+                <span class="brand-logo">AD.</span>
+                <span class="brand-name">Alya Dijayanti</span>
+            </a>
+            
+            <nav class="nav-pill-menu">
+                <a href="#tentang" class="nav-link">Tentang</a>
+                <a href="#proyek" class="nav-link">Proyek</a>
+                <a href="#pengalaman" class="nav-link">Pengalaman</a>
+                <a href="#stack" class="nav-link">Stack</a>
+                <a href="#github" class="nav-link">Github</a>
+                <a href="#kapabilitas" class="nav-link">Kapabilitas</a>
             </nav>
+
+            <div class="nav-cta-wrapper">
+                <a href="#kontak" class="nav-cta-btn">
+                    <span class="status-dot"></span>
+                    Mari Bicara
+                </a>
+            </div>
         </div>
     </header>
 
-    <!-- Main Content -->
+    <!-- Floating Quick Contact Widget -->
+    <div class="floating-widget">
+        <button class="widget-btn" id="widget-toggle" title="Menu Kontak Cepat">
+            <span class="widget-icon">💬</span>
+        </button>
+        <div class="widget-menu hidden" id="widget-dropdown">
+            <a href="mailto:alya.dijayanti@example.com" class="widget-item">✉️ Surel</a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="widget-item">🔗 LinkedIn</a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="widget-item">💻 GitHub</a>
+        </div>
+    </div>
+
+    <!-- Main Content Wrapper -->
     <main>
-        <!-- Hero Section -->
-        <section class="hero-section">
-            <div class="hero-container">
-                <div class="hero-title-wrapper">
-                    <span class="hero-star">✦</span>
-                    <h1 class="hero-title-main">SOFTWARE</h1>
-                    <h1 class="hero-title-sub">ENGINEER</h1>
-                </div>
+        <!-- 2. Hero Section (Latar Terang & Floating Pixel Assets) -->
+        <section class="hero-section" id="hero">
+            <div class="hero-bg-glow"></div>
 
-                <div class="hero-meta-grid">
-                    <div class="hero-meta-left">
-                        <span class="meta-year">©2026</span>
-                    </div>
-                    <div class="hero-meta-center">
-                        <div class="avatar-wrapper">
-                            <img src="assets/profile.png" alt="Alya Dijayanti" class="avatar-img">
-                        </div>
-                    </div>
-                    <div class="hero-meta-right">
-                        <div class="availability-badge">
-                            <span class="badge-dot"></span>
-                            Tersedia untuk Kontrak & Proyek
-                        </div>
-                    </div>
-                </div>
+            <!-- Floating Pixel Decorative Assets (Menggunakan assets/assets_cute & Hanya 1 Elemen Hati) -->
+            <div class="floating-pixel-decor decor-top-left" data-speed="1.5" title="Pixel Heart">
+                <img src="assets/assets_cute/pixel_heart.png" alt="Aset Piksel Hati Melayang" class="pixel-asset float-anim-1">
             </div>
-        </section>
+            <div class="floating-pixel-decor decor-top-mid-left" data-speed="-1.4" title="Pixel Strawberry">
+                <img src="assets/assets_cute/pixel_strawberry.png" alt="Aset Piksel Stroberi Melayang" class="pixel-asset float-anim-3">
+            </div>
+            <div class="floating-pixel-decor decor-top-right" data-speed="-1.2" title="Pixel Bear">
+                <img src="assets/assets_cute/pixel_bear.png" alt="Aset Piksel Beruang Melayang" class="pixel-asset float-anim-2">
+            </div>
+            <div class="floating-pixel-decor decor-mid-left" data-speed="1.8" title="Pixel Console">
+                <img src="assets/assets_cute/pixel_console.png" alt="Aset Piksel Konsol Melayang" class="pixel-asset float-anim-1">
+            </div>
+            <div class="floating-pixel-decor decor-mid-right" data-speed="-1.6" title="Pixel Love Letter">
+                <img src="assets/assets_cute/pixel_letter.png" alt="Aset Piksel Surat Hati Melayang" class="pixel-asset float-anim-2">
+            </div>
+            <div class="floating-pixel-decor decor-mid-far-right" data-speed="2.0" title="Pixel Bubble">
+                <img src="assets/assets_cute/pixel_bubble.png" alt="Aset Piksel Gelembung Melayang" class="pixel-asset float-anim-3">
+            </div>
+            <div class="floating-pixel-decor decor-bottom-left" data-speed="-1.8" title="Pixel Cake">
+                <img src="assets/assets_cute/pixel_cake.png" alt="Aset Piksel Kue Melayang" class="pixel-asset float-anim-3">
+            </div>
+            <div class="floating-pixel-decor decor-bottom-right" data-speed="1.2" title="Pixel Game">
+                <img src="assets/assets_cute/pixel_game.png" alt="Aset Piksel Game Melayang" class="pixel-asset float-anim-1">
+            </div>
 
-        <!-- Intro Section (Hey!) -->
-        <section class="intro-section">
-            <div class="intro-container">
-                <div class="intro-grid">
-                    <!-- Kolom Kiri: Judul & Slogan -->
-                    <div class="intro-col-left">
-                        <h2 class="intro-heading">Hei!</h2>
-                        <p class="intro-tagline">
-                            Terdiri dari ide-ide segar, solusi berbasis kode, dan desain yang dipikirkan matang-matang.
-                        </p>
-                    </div>
-
-                    <!-- Kolom Tengah: Kartu Foto Profil -->
-                    <div class="intro-col-center">
-                        <div class="intro-photo-card">
-                            <!-- Lencana Nama -->
-                            <div class="photo-badge">
-                                <span class="photo-badge-name">Alya</span>
-                                <div class="photo-badge-options">
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
-                                </div>
-                            </div>
-                            <!-- Pembungkus Foto -->
-                            <div class="photo-img-wrapper">
-                                <img src="assets/profile.png" alt="Alya Dijayanti" class="photo-img">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Kolom Kanan: Deskripsi & Kontak -->
-                    <div class="intro-col-right">
-                        <p class="intro-description">
-                            Saya Alya Dijayanti, seorang pengembang perangkat lunak yang berfokus pada perancangan dan
-                            pembangunan produk digital yang bersih, terukur, dan berkinerja tinggi. Saya mengombinasikan
-                            logika pemrograman yang kuat dengan estetika visual untuk menghasilkan pengalaman pengguna
-                            yang luar biasa.
-                        </p>
-                        <a href="#kontak" class="intro-cta">
-                            Hubungi Saya <span class="arrow">↗</span>
-                        </a>
-                    </div>
+            <div class="hero-container">
+                
+                <div class="hero-badge-pill">
+                    <span class="pill-spark">✦</span> PENGEMBANG SOFTWARE • FULL-STACK & AI
                 </div>
 
-                <div class="intro-quote-wrapper">
-                    <p class="intro-quote">
-                        Dari <span class="quote-highlight">ide hingga peluncuran</span>. Produk digital bersih dan
-                        terukur yang dirancang untuk bergerak cepat, tetap sederhana, dan berkinerja optimal dalam
-                        penggunaan nyata, didorong oleh kejelasan, sistem terstruktur, dan desain yang disengaja.
+                <div class="hero-title-group">
+                    <h1 class="hero-name-main">ALYA</h1>
+                    <h1 class="hero-name-outlined">DIJAYANTI</h1>
+                </div>
+
+                <div class="hero-subtitle-box">
+                    <p class="hero-subtitle-text">
+                        Arsitektur <span class="highlight-green">Paradigma Cerdas</span> &amp; Produk Digital.
+                    </p>
+                    <p class="hero-description">
+                        Merancang dan mengimplementasikan aplikasi modern berbasis web dan kecerdasan buatan dengan performa tinggi, struktur teratur, dan antarmuka responsif.
                     </p>
                 </div>
+
+                <div class="hero-actions">
+                    <a href="#proyek" class="btn-primary-neon">
+                        LIHAT PROYEK <span class="btn-arrow">↗</span>
+                    </a>
+                    <a href="#kontak" class="btn-secondary-outline">
+                        UNDUH CV <span class="btn-icon">📄</span>
+                    </a>
+                </div>
+
             </div>
         </section>
 
-        <!-- Services Section (Layanan) -->
-        <section id="layanan" class="services-section">
-            <div class="section-container">
-                <h2 class="section-title">Layanan</h2>
-
-                <div class="services-list">
-                    <div class="service-row">
-                        <div class="service-name">
-                            <h3>Migrasi Situs Web</h3>
-                        </div>
-                        <div class="service-desc">
-                            <p>Pemindahan platform lama ke tumpukan teknologi modern, optimasi kecepatan, integrasi
-                                data, dan peningkatan performa SEO.</p>
-                        </div>
-                    </div>
-
-                    <div class="service-row">
-                        <div class="service-name">
-                            <h3>Pengembangan Frontend</h3>
-                        </div>
-                        <div class="service-desc">
-                            <p>Membangun antarmuka interaktif yang responsif dan responsif tinggi menggunakan React,
-                                Next.js, HTML5, CSS3 modern, dan animasi mikro yang halus.</p>
-                        </div>
-                    </div>
-
-                    <div class="service-row">
-                        <div class="service-name">
-                            <h3>Pengembangan Backend</h3>
-                        </div>
-                        <div class="service-desc">
-                            <p>Perancangan RESTful API yang aman, pengelolaan basis data (SQL/NoSQL), integrasi layanan
-                                pihak ketiga, dan infrastruktur cloud.</p>
-                        </div>
-                    </div>
-
-                    <div class="service-row">
-                        <div class="service-name">
-                            <h3>Konsultasi Produk</h3>
-                        </div>
-                        <div class="service-desc">
-                            <p>Analisis UX mendalam, penentuan arsitektur teknis produk, pembuatan purwarupa cepat
-                                (MVP), serta konsultasi skalabilitas produk jangka panjang.</p>
-                        </div>
-                    </div>
+        <!-- 3. Ticker Marquee Banner (Hitam & Hijau Neon) -->
+        <section class="marquee-section">
+            <div class="marquee-row row-dark">
+                <div class="marquee-content track-left">
+                    <span>DEEP LEARNING</span> <span class="star">✦</span>
+                    <span>COMPUTER VISION</span> <span class="star">✦</span>
+                    <span>NATURAL LANGUAGE PROCESSING (NLP)</span> <span class="star">✦</span>
+                    <span>MACHINE LEARNING</span> <span class="star">✦</span>
+                    <span>WEB ENGINEERING</span> <span class="star">✦</span>
+                    <span>FULLSTACK DEV</span> <span class="star">✦</span>
+                    <!-- Duplicate for smooth loop -->
+                    <span>DEEP LEARNING</span> <span class="star">✦</span>
+                    <span>COMPUTER VISION</span> <span class="star">✦</span>
+                    <span>NATURAL LANGUAGE PROCESSING (NLP)</span> <span class="star">✦</span>
+                    <span>MACHINE LEARNING</span> <span class="star">✦</span>
+                    <span>WEB ENGINEERING</span> <span class="star">✦</span>
+                    <span>FULLSTACK DEV</span> <span class="star">✦</span>
+                </div>
+            </div>
+            <div class="marquee-row row-green">
+                <div class="marquee-content track-right">
+                    <span>NATURAL LANGUAGE PROCESSING (NLP)</span> <span class="star">✦</span>
+                    <span>MACHINE LEARNING &amp; AI</span> <span class="star">✦</span>
+                    <span>DATA SCIENCE</span> <span class="star">✦</span>
+                    <span>WEB ENGINEERING</span> <span class="star">✦</span>
+                    <span>FRONTEND &amp; BACKEND</span> <span class="star">✦</span>
+                    <!-- Duplicate for smooth loop -->
+                    <span>NATURAL LANGUAGE PROCESSING (NLP)</span> <span class="star">✦</span>
+                    <span>MACHINE LEARNING &amp; AI</span> <span class="star">✦</span>
+                    <span>DATA SCIENCE</span> <span class="star">✦</span>
+                    <span>WEB ENGINEERING</span> <span class="star">✦</span>
+                    <span>FRONTEND &amp; BACKEND</span> <span class="star">✦</span>
                 </div>
             </div>
         </section>
 
-        <!-- Featured Projects Section (Proyek Pilihan) -->
-        <section id="proyek" class="projects-section">
+        <!-- 4. Seksi 1: Tentang Saya (Latar Terang) -->
+        <section class="about-section" id="tentang">
             <div class="section-container">
-                <div class="section-header-flex">
-                    <h2 class="section-title">Proyek Pilihan</h2>
-                    <a href="proyek.html" class="section-link-btn">Semua Proyek <span class="arrow">↗</span></a>
-                </div>
-
-                <div class="projects-grid">
-                    <!-- Project: Payroll Enterprise -->
-                    <div class="project-card wide card-green">
-                        <div class="project-image-container">
-                            <img src="assets/project_payroll.png" alt="Payroll Enterprise Project Mockup" class="project-img">
-                        </div>
-                        <div class="project-info">
-                            <h3 class="project-title">Payroll Enterprise</h3>
-                            <p class="project-meta">Sistem Penggajian & Kelola Karyawan / Fullstack Dev & UX</p>
-                        </div>
-                    </div>
-
-                    <!-- Project 1: Domus -->
-                    <div class="project-card card-teal">
-                        <div class="project-image-container">
-                            <img src="assets/project_domus.png" alt="Domus Project Mockup" class="project-img">
-                        </div>
-                        <div class="project-info">
-                            <h3 class="project-title">Domus</h3>
-                            <p class="project-meta">Pencarian Rumah Minimalis / Frontend & UX</p>
-                        </div>
-                    </div>
-
-                    <!-- Project 2: Najm -->
-                    <div class="project-card card-purple">
-                        <div class="project-image-container">
-                            <img src="assets/project_najm.png" alt="Najm Project Mockup" class="project-img">
-                        </div>
-                        <div class="project-info">
-                            <h3 class="project-title">Najm</h3>
-                            <p class="project-meta">Dashboard Telemetri Astronomi / Fullstack Dev</p>
-                        </div>
-                    </div>
-
-                    <!-- Project 3: Kivi -->
-                    <div class="project-card card-pink">
-                        <div class="project-image-container">
-                            <img src="assets/project_kivi.png" alt="Kivi Project Mockup" class="project-img">
-                        </div>
-                        <div class="project-info">
-                            <h3 class="project-title">Kivi</h3>
-                            <p class="project-meta">SaaS Manajemen Keuangan Pribadi / Integrasi API</p>
-                        </div>
-                    </div>
-
-                    <!-- Project 4: FrontWing -->
-                    <div class="project-card card-blue">
-                        <div class="project-image-container">
-                            <img src="assets/project_frontwing.png" alt="FrontWing Project Mockup" class="project-img">
-                        </div>
-                        <div class="project-info">
-                            <h3 class="project-title">FrontWing</h3>
-                            <p class="project-meta">Kolaborasi Tim & Manajemen Alur Kerja / React App</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Achievements & Leadership Section (Pencapaian & Kepemimpinan) -->
-        <section id="prestasi" class="achievements-section">
-            <div class="section-container">
-                <h2 class="section-title">Pencapaian &amp; Kepemimpinan</h2>
-
-                <div class="achievements-list">
-
-                    <!-- Item 1: Project Manager -->
-                    <div class="achievement-row">
-                        <div class="achievement-meta">
-                            <span class="achievement-date">08/2025 - 09/2025</span>
-                            <h3 class="achievement-role">Manajer Proyek</h3>
-                            <span class="achievement-org">UIX Himsi Smart Fest Competition</span>
-                            <span class="achievement-subtitle">Kompetisi desain UI/UX untuk solusi inovatif</span>
-                        </div>
-                        <div class="achievement-content">
-                            <div class="achievement-badge-award">Juara 2</div>
-                            <ul class="achievement-bullets">
-                                <li>Meraih Juara 2, bersaing dengan berbagai cabang HIMSI.</li>
-                                <li>Memetakan logika sistem dan alur pengguna (<em>user flows</em>) melalui bagan alir
-                                    (<em>flowcharts</em>) untuk menyederhanakan proses pembuatan kerangka gambar
-                                    (<em>wireframing</em>) dan arsitektur UI.</li>
-                                <li>Merancang UI beresolusi tinggi (<em>high-fidelity</em>) dengan pendekatan yang
-                                    bersih dan modern.</li>
-                                <li>Membangun purwarupa (<em>prototype</em>) interaktif untuk menguji alur pengalaman
-                                    pengguna.</li>
-                                <li>Berkolaborasi dengan tim yang berfokus pada kerja sama dan hasil kolektif.</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Item 2: UI/UX Designer -->
-                    <div class="achievement-row">
-                        <div class="achievement-meta">
-                            <span class="achievement-date">06/2025 - 07/2025</span>
-                            <h3 class="achievement-role">Desainer UI/UX</h3>
-                            <span class="achievement-org">IT Bootcamp Workshop: "Software Development for
-                                Industry"</span>
-                            <span class="achievement-subtitle">Proyek perancangan sistem informasi berbasis web</span>
-                        </div>
-                        <div class="achievement-content">
-                            <ul class="achievement-bullets">
-                                <li>Berkolaborasi menggunakan praktik Scrum seperti perencanaan sprint (<em>sprint
-                                        planning</em>) dan koordinasi harian menggunakan Jira.</li>
-                                <li>Membuat kerangka gambar (<em>wireframes</em>) berdasarkan hasil analisis kebutuhan.
-                                </li>
-                                <li>Merancang UI beresolusi tinggi (<em>high-fidelity</em>) dengan pendekatan yang
-                                    bersih dan modern.</li>
-                                <li>Membangun purwarupa (<em>prototype</em>) interaktif untuk menguji alur pengalaman
-                                    pengguna.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Thoughts Section (Pemikiran) -->
-        <section id="pemikiran" class="thoughts-section">
-            <div class="section-container">
-                <h2 class="section-title">Pemikiran</h2>
-
-                <div class="thoughts-grid">
-                    <!-- Article 1 -->
-                    <div class="thought-card image-card"
-                        style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.85)), url('assets/blog_trust.png');">
-                        <div class="thought-badge">Desain</div>
-                        <div class="thought-content">
-                            <h3 class="thought-title-text">Membangun Kepercayaan Melalui Desain yang Bersih</h3>
-                            <span class="thought-read-time">Baca 4 Menit</span>
-                        </div>
-                    </div>
-
-                    <!-- Article 2 -->
-                    <div class="thought-card image-card"
-                        style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.85)), url('assets/blog_art.png');">
-                        <div class="thought-badge">Branding</div>
-                        <div class="thought-content">
-                            <h3 class="thought-title-text">Peran Arah Seni dalam Branding Produk</h3>
-                            <span class="thought-read-time">Baca 6 Menit</span>
-                        </div>
-                    </div>
-
-                    <!-- CTA Blog Card -->
-                    <div class="thought-card solid-card">
-                        <div class="solid-card-inner">
-                            <p class="solid-card-text">Lihat bagaimana kami membentuk merek dengan kejelasan dan
-                                keahlian—jelajahi blog kami!</p>
-                            <a href="#kontak" class="solid-card-link">Kunjungi Blog <span class="arrow">↗</span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Let's Talk Section -->
-        <section id="kontak" class="contact-section">
-            <div class="section-container">
-                <div class="contact-grid">
-                    <div class="contact-info-col">
-                        <h2 class="contact-heading">Mari bicara.</h2>
-                        <p class="contact-subtext">Punya proyek menarik di pikiran Anda? Mari kita bangun sesuatu yang
-                            hebat bersama.</p>
-
-                        <div class="contact-social-icons">
-                            <a href="https://github.com" target="_blank" rel="noopener noreferrer"
-                                class="social-pill">GitHub</a>
-                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
-                                class="social-pill">LinkedIn</a>
-                            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
-                                class="social-pill">Twitter</a>
-                        </div>
-                    </div>
-
-                    <div class="contact-form-col">
-                        <div class="form-container">
-                            <form id="contact-form" class="contact-form">
-                                <div class="form-group">
-                                    <label for="name">Nama</label>
-                                    <input type="text" id="name" name="name" placeholder="Nama Anda" required>
+                <div class="about-grid">
+                    
+                    <!-- Kolom Kiri: Foto Bertumpuk & Statistik -->
+                    <div class="about-col-left">
+                        <div class="photo-stack-wrapper">
+                            <div class="photo-card card-top">
+                                <img src="assets/profile.png" alt="Alya Dijayanti Foto Utama" class="stack-img">
+                                <div class="photo-tag">
+                                    <span class="tag-icon">📍</span> Tangerang, Indonesia
                                 </div>
-                                <div class="form-group">
-                                    <label for="email">Surel</label>
-                                    <input type="email" id="email" name="email" placeholder="nama@perusahaan.com"
-                                        required>
+                            </div>
+                            <div class="photo-card card-bottom">
+                                <img src="assets/profile2.png" alt="Alya Dijayanti Foto Kerja" class="stack-img">
+                                <div class="photo-tag-badge">
+                                    <span class="badge-dot-active"></span> Software Engineer
                                 </div>
-                                <div class="form-group">
-                                    <label for="message">Pesan</label>
-                                    <textarea id="message" name="message" rows="5"
-                                        placeholder="Ceritakan tentang proyek Anda..." required></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Baris Statistik -->
+                        <div class="stats-pills-row">
+                            <div class="stat-pill">
+                                <span class="stat-num">03+</span>
+                                <span class="stat-lbl">THN EXP</span>
+                            </div>
+                            <div class="stat-pill">
+                                <span class="stat-num">20+</span>
+                                <span class="stat-lbl">PROYEK</span>
+                            </div>
+                            <div class="stat-pill">
+                                <span class="stat-num">07+</span>
+                                <span class="stat-lbl">PRESTASI</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kolom Kanan: Deskripsi & Akordeon Pencapaian -->
+                    <div class="about-col-right">
+                        <span class="section-tagline">// TENTANG SAYA</span>
+                        <h2 class="about-heading">Software Developer dengan Delivery Produk Full-Stack &amp; AI</h2>
+                        
+                        <p class="about-paragraph">
+                            Saya Alya Dijayanti, pengembang perangkat lunak yang berfokus pada ekosistem web modern dan penerapan kecerdasan buatan. Menggabungkan logika pemrograman yang presisi dengan estetika visual antarmuka untuk menghasilkan produk digital yang tangguh, efisien, dan ramah pengguna.
+                        </p>
+                        
+                        <p class="about-paragraph">
+                            Berikhtiar membangun arsitektur perangkat lunak scalable dari tahap konsepsi ide, perancangan UI/UX, pengembangan backend API, hingga integrasi model Machine Learning pada lingkungan produksi nyata.
+                        </p>
+
+                        <!-- Accordion List Pencapaian -->
+                        <div class="about-accordion-list">
+                            
+                            <div class="accordion-item active">
+                                <button class="accordion-header">
+                                    <div class="acc-title-wrap">
+                                        <span class="acc-badge">Nasional</span>
+                                        <span class="acc-title">Finalis &amp; Juara 2 UIX Himsi Smart Fest</span>
+                                    </div>
+                                    <span class="acc-toggle-icon">−</span>
+                                </button>
+                                <div class="accordion-body">
+                                    <p>Meraih Juara 2 dalam kompetisi perancangan UI/UX tingkat nasional. Memetakan arsitektur informasi, bagan alir (flowcharts), kerangka gambar (wireframes), hingga purwarupa high-fidelity yang interaktif.</p>
                                 </div>
-                                <button type="submit" class="submit-btn" id="submit-btn">Kirim Pesan</button>
+                            </div>
+
+                            <div class="accordion-item">
+                                <button class="accordion-header">
+                                    <div class="acc-title-wrap">
+                                        <span class="acc-badge">Bootcamp</span>
+                                        <span class="acc-title">IT Bootcamp Workshop: Software Dev</span>
+                                    </div>
+                                    <span class="acc-toggle-icon">+</span>
+                                </button>
+                                <div class="accordion-body">
+                                    <p>Mengaplikasikan metode pengurusan proyek Agile/Scrum, sprint planning, integrasi Jira, serta perancangan sistem informasi berbasis web yang responsif dan teruji.</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Seksi 2: Eksplorasi Proyek (Latar Gelap / Hitam Kontras) -->
+        <section class="explorations-section" id="proyek">
+            <div class="section-container">
+                <div class="explorations-grid">
+                    
+                    <!-- Kolom Kiri Header Gelap -->
+                    <div class="exp-header-col">
+                        <span class="section-tagline-neon">// PORTOFOLIO</span>
+                        <h2 class="exp-title-main">
+                            EKSPLORASI <br>
+                            <span class="text-neon-glow">PROYEK</span>
+                        </h2>
+                        <p class="exp-subtitle">
+                            Transformasi gagasan kompleks menjadi aplikasi dunia nyata dengan kinerja optimal.
+                        </p>
+
+                        <a href="proyek.html" class="exp-circle-btn" title="Lihat Semua Proyek">
+                            <span class="arrow-icon">↗</span>
+                        </a>
+                    </div>
+
+                    <!-- Kolom Kanan Carousel Kartu Proyek -->
+                    <div class="exp-cards-col">
+                        <div class="project-cards-wrapper">
+                            
+                            <!-- Proyek 1 -->
+                            <div class="project-showcase-card">
+                                <div class="card-media-box">
+                                    <img src="assets/project_payroll.png" alt="Payroll Enterprise Mockup" class="showcase-img">
+                                    <div class="media-overlay">
+                                        <span class="play-badge">▶ Pratinjau Proyek</span>
+                                    </div>
+                                </div>
+                                <div class="card-details">
+                                    <div class="card-tags">
+                                        <span class="tag-pill">Fullstack</span>
+                                        <span class="tag-pill">Web App</span>
+                                    </div>
+                                    <h3 class="card-title">Payroll Enterprise System</h3>
+                                    <p class="card-desc">Sistem manajemen penggajian karyawan skala perusahaan dengan pembuatan laporan otomatis.</p>
+                                </div>
+                            </div>
+
+                            <!-- Proyek 2 -->
+                            <div class="project-showcase-card">
+                                <div class="card-media-box">
+                                    <img src="assets/project_najm.png" alt="Diabetes AI Model Mockup" class="showcase-img">
+                                    <div class="media-overlay">
+                                        <span class="play-badge">▶ Model AI</span>
+                                    </div>
+                                </div>
+                                <div class="card-details">
+                                    <div class="card-tags">
+                                        <span class="tag-pill">Machine Learning</span>
+                                        <span class="tag-pill">Python</span>
+                                    </div>
+                                    <h3 class="card-title">Diabetes Classification AI</h3>
+                                    <p class="card-desc">Model prediksi risiko penyakit diabetes menggunakan algoritma klasifikasi &amp; antarmuka web.</p>
+                                </div>
+                            </div>
+
+                            <!-- Proyek 3 -->
+                            <div class="project-showcase-card">
+                                <div class="card-media-box">
+                                    <img src="assets/project_domus.png" alt="Domus Real Estate Mockup" class="showcase-img">
+                                    <div class="media-overlay">
+                                        <span class="play-badge">▶ UI/UX</span>
+                                    </div>
+                                </div>
+                                <div class="card-details">
+                                    <div class="card-tags">
+                                        <span class="tag-pill">Frontend</span>
+                                        <span class="tag-pill">React</span>
+                                    </div>
+                                    <h3 class="card-title">Domus Minimalist Real Estate</h3>
+                                    <p class="card-desc">Platform pencarian dan sewa hunian minimalis dengan filter interaktif cepat.</p>
+                                </div>
+                            </div>
+
+                            <!-- Proyek 4 -->
+                            <div class="project-showcase-card">
+                                <div class="card-media-box">
+                                    <img src="assets/project_kivi.png" alt="Kivi SaaS Mockup" class="showcase-img">
+                                    <div class="media-overlay">
+                                        <span class="play-badge">▶ SaaS</span>
+                                    </div>
+                                </div>
+                                <div class="card-details">
+                                    <div class="card-tags">
+                                        <span class="tag-pill">REST API</span>
+                                        <span class="tag-pill">Finance</span>
+                                    </div>
+                                    <h3 class="card-title">Kivi Financial Dashboard</h3>
+                                    <p class="card-desc">Aplikasi SaaS pengelola keuangan pribadi dan analisis arus kas otomatis.</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Seksi 3: Pengalaman Profesional (Latar Terang) -->
+        <section class="experience-section" id="pengalaman">
+            <div class="section-container">
+                <div class="experience-grid">
+                    
+                    <!-- Kolom Kiri Header -->
+                    <div class="exp-col-left">
+                        <span class="section-tagline">// REKAM JEJAK</span>
+                        <h2 class="exp-heading-main">
+                            PENGALAMAN <br>
+                            <span class="text-dark-bold">PROFESIONAL</span>
+                        </h2>
+                        <p class="exp-lead-text">
+                            Pengalaman kerja dan kontribusi aktif dalam pengembangan aplikasi web, antarmuka pengguna, serta kepemimpinan proyek teknis.
+                        </p>
+
+                        <!-- Box Info Ketersediaan -->
+                        <div class="availability-card-box">
+                            <div class="avail-header">
+                                <span class="pulse-dot"></span>
+                                <span class="avail-title">STATUS KETERSEDIAAN</span>
+                            </div>
+                            <p class="avail-desc">Tersedia untuk proyek kontrak, penuh waktu, atau kolaborasi rintisan digital.</p>
+                            <div class="avail-meta">
+                                <span>📍 Tangerang / Remote</span>
+                                <span>⚡ Tanggap Cepat</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kolom Kanan Accordion Pengalaman -->
+                    <div class="exp-col-right">
+                        <div class="experience-list">
+                            
+                            <!-- Item Pengalaman 1 -->
+                            <div class="exp-card-item active">
+                                <div class="exp-card-header">
+                                    <div class="exp-role-wrap">
+                                        <span class="exp-date">08/2025 — 09/2025</span>
+                                        <h3 class="exp-role-title">MANAJER PROYEK &amp; TIM LEADER</h3>
+                                        <span class="exp-company">UIX Himsi Smart Fest Competition</span>
+                                    </div>
+                                    <button class="exp-expand-btn">−</button>
+                                </div>
+                                <div class="exp-card-content">
+                                    <ul class="exp-bullets">
+                                        <li>Memimpin perancangan produk digital dari tahap riset pengguna hingga tahap pembuatan purwarupa interaktif.</li>
+                                        <li>Mengoordinasikan alur kerja tim, penyusunan arsitektur informasi, serta flowchart sistem.</li>
+                                        <li>Memastikan standar estetika dan kejelasan UX pada tampilan high-fidelity akhir.</li>
+                                    </ul>
+                                    <div class="exp-tech-tags">
+                                        <span>Figma</span>
+                                        <span>UI/UX Design</span>
+                                        <span>User Flows</span>
+                                        <span>Prototyping</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Item Pengalaman 2 -->
+                            <div class="exp-card-item">
+                                <div class="exp-card-header">
+                                    <div class="exp-role-wrap">
+                                        <span class="exp-date">06/2025 — 07/2025</span>
+                                        <h3 class="exp-role-title">DESAINER UI/UX &amp; FRONTEND</h3>
+                                        <span class="exp-company">IT Bootcamp Workshop: Software Development</span>
+                                    </div>
+                                    <button class="exp-expand-btn">+</button>
+                                </div>
+                                <div class="exp-card-content">
+                                    <ul class="exp-bullets">
+                                        <li>Menerapkan prinsip Agile Scrum dalam sprint 2 mingguan untuk menghasilkan sistem web terukur.</li>
+                                        <li>Membuat wireframes, UI komponen modular, dan mengimplementasikannya ke dalam kode HTML/CSS/JS.</li>
+                                        <li>Melakukan pengujian kebiasaan pengguna untuk mengoptimalkan performa navigasi antarmuka.</li>
+                                    </ul>
+                                    <div class="exp-tech-tags">
+                                        <span>HTML5/CSS3</span>
+                                        <span>JavaScript</span>
+                                        <span>Jira</span>
+                                        <span>Scrum</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Item Pengalaman 3 -->
+                            <div class="exp-card-item">
+                                <div class="exp-card-header">
+                                    <div class="exp-role-wrap">
+                                        <span class="exp-date">2024 — SEKARANG</span>
+                                        <h3 class="exp-role-title">SOFTWARE ENGINEER (FREELANCE)</h3>
+                                        <span class="exp-company">Pengembangan Aplikasi Digital &amp; Klien</span>
+                                    </div>
+                                    <button class="exp-expand-btn">+</button>
+                                </div>
+                                <div class="exp-card-content">
+                                    <ul class="exp-bullets">
+                                        <li>Membangun aplikasi web kustom untuk klien dengan integrasi RESTful API dan basis data terstruktur.</li>
+                                        <li>Mengembangkan antarmuka modern dengan waktu muat cepat dan optimasi SEO menyeluruh.</li>
+                                        <li>Mengintegrasikan modul Machine Learning sederhana untuk otomatisasi pemrosesan data.</li>
+                                    </ul>
+                                    <div class="exp-tech-tags">
+                                        <span>React</span>
+                                        <span>Node.js</span>
+                                        <span>Python</span>
+                                        <span>PostgreSQL</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Seksi 4: Core Stack (Latar Gelap / Hitam) -->
+        <section class="corestack-section" id="stack">
+            <div class="section-container">
+                <div class="corestack-grid">
+                    
+                    <!-- Kiri Title -->
+                    <div class="stack-col-left">
+                        <span class="section-tagline-neon">// TEKNOLOGI UPTIME</span>
+                        <h2 class="stack-title-main">
+                            CORE <br>
+                            <span class="text-neon-glow">STACK.</span>
+                        </h2>
+                        <p class="stack-lead-text">
+                            Kumpulan alat, kerangka kerja, dan bahasa pemrograman utama yang saya andalkan untuk membangun produk digital yang aman, cepat, dan mudah dipelihara.
+                        </p>
+                    </div>
+
+                    <!-- Kanan Stack Rows -->
+                    <div class="stack-col-right">
+                        
+                        <!-- Row 01 -->
+                        <div class="stack-row-card">
+                            <div class="stack-row-header">
+                                <span class="stack-num">01 //</span>
+                                <h3 class="stack-row-title">PENGEMBANGAN AI &amp; MACHINE LEARNING</h3>
+                            </div>
+                            <div class="stack-icons-grid">
+                                <div class="tech-badge" title="Python">
+                                    <span class="tech-icon">🐍</span> Python
+                                </div>
+                                <div class="tech-badge" title="TensorFlow">
+                                    <span class="tech-icon">🧠</span> TensorFlow
+                                </div>
+                                <div class="tech-badge" title="PyTorch">
+                                    <span class="tech-icon">🔥</span> PyTorch
+                                </div>
+                                <div class="tech-badge" title="Scikit-Learn">
+                                    <span class="tech-icon">📊</span> Scikit-Learn
+                                </div>
+                                <div class="tech-badge" title="OpenCV">
+                                    <span class="tech-icon">👁️</span> OpenCV
+                                </div>
+                                <div class="tech-badge" title="Pandas">
+                                    <span class="tech-icon">🐼</span> Pandas
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Row 02 -->
+                        <div class="stack-row-card">
+                            <div class="stack-row-header">
+                                <span class="stack-num">02 //</span>
+                                <h3 class="stack-row-title">FRONTEND ENGINEERING</h3>
+                            </div>
+                            <div class="stack-icons-grid">
+                                <div class="tech-badge" title="React.js">
+                                    <span class="tech-icon">⚛️</span> React
+                                </div>
+                                <div class="tech-badge" title="Next.js">
+                                    <span class="tech-icon">▲</span> Next.js
+                                </div>
+                                <div class="tech-badge" title="JavaScript">
+                                    <span class="tech-icon">🟨</span> JavaScript (ES6+)
+                                </div>
+                                <div class="tech-badge" title="HTML5">
+                                    <span class="tech-icon">🌐</span> HTML5
+                                </div>
+                                <div class="tech-badge" title="CSS3 / Vanilla">
+                                    <span class="tech-icon">🎨</span> CSS3 Modern
+                                </div>
+                                <div class="tech-badge" title="Tailwind CSS">
+                                    <span class="tech-icon">💨</span> Tailwind
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Row 03 -->
+                        <div class="stack-row-card">
+                            <div class="stack-row-header">
+                                <span class="stack-num">03 //</span>
+                                <h3 class="stack-row-title">BACKEND &amp; API</h3>
+                            </div>
+                            <div class="stack-icons-grid">
+                                <div class="tech-badge" title="Node.js">
+                                    <span class="tech-icon">🟢</span> Node.js
+                                </div>
+                                <div class="tech-badge" title="Express.js">
+                                    <span class="tech-icon">🚀</span> Express
+                                </div>
+                                <div class="tech-badge" title="FastAPI">
+                                    <span class="tech-icon">⚡</span> FastAPI
+                                </div>
+                                <div class="tech-badge" title="PostgreSQL">
+                                    <span class="tech-icon">🐘</span> PostgreSQL
+                                </div>
+                                <div class="tech-badge" title="MongoDB">
+                                    <span class="tech-icon">🍃</span> MongoDB
+                                </div>
+                                <div class="tech-badge" title="REST API">
+                                    <span class="tech-icon">🔌</span> REST API
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. Seksi 5: Aktivitas GitHub (Latar Gelap / Hitam) -->
+        <section class="github-section" id="github">
+            <div class="section-container">
+                
+                <div class="github-header-flex">
+                    <div class="github-header-text">
+                        <span class="section-tagline-neon">// KODE TERBUKA</span>
+                        <h2 class="github-title-main">
+                            AKTIVITAS <span class="text-neon-glow">GITHUB.</span>
+                        </h2>
+                    </div>
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn-github-profile">
+                        LIHAT PROFIL GITHUB <span class="arrow">↗</span>
+                    </a>
+                </div>
+
+                <div class="github-grid">
+                    
+                    <!-- Metric Cards Kiri -->
+                    <div class="github-metrics-col">
+                        <div class="metric-card">
+                            <span class="metric-value">540+</span>
+                            <span class="metric-label">Total Komit Tahun Ini</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value">18+</span>
+                            <span class="metric-label">Repositori Publik</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value">42+</span>
+                            <span class="metric-label">Pull Requests Diterima</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value">99.8%</span>
+                            <span class="metric-label">Kualitas Kode &amp; Uptime</span>
+                        </div>
+                    </div>
+
+                    <!-- Heatmap Graphic Kanan -->
+                    <div class="github-heatmap-col">
+                        <div class="heatmap-card">
+                            <div class="heatmap-header">
+                                <div class="heatmap-title">
+                                    <span class="terminal-dot green"></span>
+                                    <span class="terminal-dot yellow"></span>
+                                    <span class="terminal-dot red"></span>
+                                    <span class="terminal-path">system_log // github_contributions.log</span>
+                                </div>
+                                <span class="live-status"><span class="pulse-green"></span> Aktif</span>
+                            </div>
+
+                            <!-- Heatmap Matrix Grid -->
+                            <div class="heatmap-matrix" id="github-matrix">
+                                <!-- Generated via JS dynamically for clean rendering -->
+                            </div>
+
+                            <div class="heatmap-footer">
+                                <span class="legend-text">Sedikit</span>
+                                <div class="legend-cells">
+                                    <span class="level-0"></span>
+                                    <span class="level-1"></span>
+                                    <span class="level-2"></span>
+                                    <span class="level-3"></span>
+                                    <span class="level-4"></span>
+                                </div>
+                                <span class="legend-text">Banyak</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 9. Seksi 6: Kapabilitas Teknis (Latar Terang) -->
+        <section class="capabilities-section" id="kapabilitas">
+            <div class="section-container">
+                
+                <div class="capabilities-header">
+                    <span class="section-tagline">// SPESIALISASI DOMAIN</span>
+                    <h2 class="cap-title-giant">
+                        KAPABILITAS <br>
+                        <span class="text-dark-stroke">TEKNIS.</span>
+                    </h2>
+                </div>
+
+                <div class="capabilities-grid">
+                    
+                    <!-- Card 01 -->
+                    <div class="cap-card">
+                        <div class="cap-card-top">
+                            <span class="cap-number">01</span>
+                            <span class="cap-icon">📊</span>
+                        </div>
+                        <h3 class="cap-title">MACHINE LEARNING</h3>
+                        <p class="cap-desc">Pemodelan data prediktif, algoritma klasifikasi, regresi, pengkelompokan (clustering), dan ekstraksi fitur terstruktur.</p>
+                        <div class="cap-tags">
+                            <span>Scikit-Learn</span> <span>Regression</span> <span>Classification</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 02 (Aksen Gelap Khusus Sesuai Gambar Acuan!) -->
+                    <div class="cap-card card-dark-accent">
+                        <div class="cap-card-top">
+                            <span class="cap-number text-neon">02</span>
+                            <span class="cap-icon">🧠</span>
+                        </div>
+                        <h3 class="cap-title text-white">DEEP LEARNING</h3>
+                        <p class="cap-desc text-light-muted">Arsitektur jaringan saraf tiruan (CNN, RNN, LSTM), pemrosesan data linier berdimensi tinggi, serta arsitektur kecerdasan mendalam.</p>
+                        <div class="cap-tags tags-dark">
+                            <span>TensorFlow</span> <span>PyTorch</span> <span>Neural Nets</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 03 -->
+                    <div class="cap-card">
+                        <div class="cap-card-top">
+                            <span class="cap-number">03</span>
+                            <span class="cap-icon">👁️</span>
+                        </div>
+                        <h3 class="cap-title">COMPUTER VISION</h3>
+                        <p class="cap-desc">Pengolahan citra digital, deteksi objek real-time, segmentasi piksel visual, dan verifikasi spasial otomatis.</p>
+                        <div class="cap-tags">
+                            <span>OpenCV</span> <span>YOLO</span> <span>Image Processing</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 04 -->
+                    <div class="cap-card">
+                        <div class="cap-card-top">
+                            <span class="cap-number">04</span>
+                            <span class="cap-icon">💬</span>
+                        </div>
+                        <h3 class="cap-title">NLP &amp; GENAI</h3>
+                        <p class="cap-desc">Pemrosesan bahasa alami (NLP), analisis sentimen teks, integrasi API Large Language Models (LLM), dan otomatisasi prompt.</p>
+                        <div class="cap-tags">
+                            <span>NLTK</span> <span>Transformers</span> <span>LLM API</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 05 -->
+                    <div class="cap-card">
+                        <div class="cap-card-top">
+                            <span class="cap-number">05</span>
+                            <span class="cap-icon">⚙️</span>
+                        </div>
+                        <h3 class="cap-title">MLOPS &amp; PIPELINE</h3>
+                        <p class="cap-desc">Manajemen siklus hidup model AI, kontenerisasi Docker, dan peluncuran pipeline kecerdasan buatan ke lingkungan siap pakai.</p>
+                        <div class="cap-tags">
+                            <span>Docker</span> <span>CI/CD</span> <span>Model Deploy</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 06 -->
+                    <div class="cap-card">
+                        <div class="cap-card-top">
+                            <span class="cap-number">06</span>
+                            <span class="cap-icon">📈</span>
+                        </div>
+                        <h3 class="cap-title">ANALISIS DATA</h3>
+                        <p class="cap-desc">Eksplorasi data tingkat lanjut (EDA), pembersihan dataset, perancangan dashboard metrik, dan penyusunan wawasan empiris.</p>
+                        <div class="cap-tags">
+                            <span>Pandas</span> <span>NumPy</span> <span>Matplotlib</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 07 -->
+                    <div class="cap-card">
+                        <div class="cap-card-top">
+                            <span class="cap-number">07</span>
+                            <span class="cap-icon">🌐</span>
+                        </div>
+                        <h3 class="cap-title">PENGEMBANGAN WEB</h3>
+                        <p class="cap-desc">Aplikasi web full-stack, desain responsif multi-perangkat, arsitektur RESTful API, dan optimasi performa muat.</p>
+                        <div class="cap-tags">
+                            <span>React</span> <span>Node.js</span> <span>CSS3/Vanilla</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 08 -->
+                    <div class="cap-card">
+                        <div class="cap-card-top">
+                            <span class="cap-number">08</span>
+                            <span class="cap-icon">🎨</span>
+                        </div>
+                        <h3 class="cap-title">DESAIN UI/UX</h3>
+                        <p class="cap-desc">Perancangan sistem komponen antarmuka visual, kerangka kawat high-fidelity, sistem desain konsisten, dan pengujian alur pengguna.</p>
+                        <div class="cap-tags">
+                            <span>Figma</span> <span>Design Systems</span> <span>UX Research</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 10. Seksi 7: Mari Terhubung & Footer (Latar Gelap / Hitam) -->
+        <section class="connect-section" id="kontak">
+            <div class="section-container">
+                <div class="connect-grid">
+                    
+                    <!-- Kolom Kiri Informasi Kontak -->
+                    <div class="connect-info-col">
+                        <span class="section-tagline-neon">// KONTRAK &amp; KOLABORASI</span>
+                        <h2 class="connect-title-giant">
+                            MARI <br>
+                            <span class="text-neon-glow">TERHUBUNG.</span>
+                        </h2>
+                        <p class="connect-desc">
+                            Tertarik untuk membangun produk digital baru, memperbarui arsitektur sistem, atau mendiskusikan peluang kolaborasi teknis? Mari bicara.
+                        </p>
+
+                        <div class="direct-email-box">
+                            <span class="email-label">ALAMAT SUREL DIREK</span>
+                            <a href="mailto:alya.dijayanti@example.com" class="email-link">alya.dijayanti@example.com ↗</a>
+                        </div>
+
+                        <div class="social-pills-row">
+                            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-pill-btn">GitHub</a>
+                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-pill-btn">LinkedIn</a>
+                            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-pill-btn">Twitter</a>
+                            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-pill-btn">Instagram</a>
+                        </div>
+                    </div>
+
+                    <!-- Kolom Kanan Formulir Kontak -->
+                    <div class="connect-form-col">
+                        <div class="contact-card-form">
+                            <h3 class="form-title">Kirim Pesan Langsung</h3>
+                            <form id="contact-form" class="main-form">
+                                <div class="form-row">
+                                    <div class="form-field">
+                                        <label for="name">Nama Lengkap</label>
+                                        <input type="text" id="name" name="name" placeholder="Nama Anda" required>
+                                    </div>
+                                    <div class="form-field">
+                                        <label for="email">Alamat Surel</label>
+                                        <input type="email" id="email" name="email" placeholder="nama@perusahaan.com" required>
+                                    </div>
+                                </div>
+                                <div class="form-field">
+                                    <label for="subject">Subjek / Topik Proyek</label>
+                                    <input type="text" id="subject" name="subject" placeholder="Pengembangan Web / Integrasi AI / Konsultasi" required>
+                                </div>
+                                <div class="form-field">
+                                    <label for="message">Pesan Anda</label>
+                                    <textarea id="message" name="message" rows="4" placeholder="Jelaskan kebutuhan proyek atau pertanyaan Anda secara rinci..." required></textarea>
+                                </div>
+                                <button type="submit" class="submit-neon-btn" id="submit-btn">
+                                    KIRIM PESAN <span class="btn-arrow">↗</span>
+                                </button>
                             </form>
                             <div id="form-feedback" class="form-feedback hidden"></div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
@@ -377,44 +841,41 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
-            <div class="footer-main-grid">
+            <div class="footer-grid">
                 <div class="footer-brand-col">
-                    <h2 class="footer-brand-text">Mengembangkan Rintisan untuk Pertumbuhan.</h2>
+                    <span class="footer-logo">AD. Alya Dijayanti</span>
+                    <p class="footer-slogan">Arsitektur Perangkat Lunak &amp; Produk Digital Terukur.</p>
                 </div>
-
+                
                 <div class="footer-links-col">
-                    <h4 class="footer-links-title">Tautan Cepat</h4>
-                    <ul class="footer-links-list">
-                        <li><a href="#" class="footer-link">Beranda</a></li>
-                        <li><a href="#layanan" class="footer-link">Layanan</a></li>
-                        <li><a href="proyek.html" class="footer-link">Proyek</a></li>
-                        <li><a href="#prestasi" class="footer-link">Pencapaian</a></li>
-                        <li><a href="#pemikiran" class="footer-link">Pemikiran</a></li>
+                    <h4 class="footer-heading">Navigasi</h4>
+                    <ul class="footer-links">
+                        <li><a href="#hero">Beranda</a></li>
+                        <li><a href="#tentang">Tentang Saya</a></li>
+                        <li><a href="#proyek">Eksplorasi Proyek</a></li>
+                        <li><a href="#pengalaman">Pengalaman</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-links-col">
-                    <h4 class="footer-links-title">Kontak & Sosial</h4>
-                    <ul class="footer-links-list">
-                        <li><a href="mailto:alya@example.com" class="footer-link">Surel</a></li>
-                        <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
-                                class="footer-link">LinkedIn</a></li>
-                        <li><a href="https://github.com" target="_blank" rel="noopener noreferrer"
-                                class="footer-link">GitHub</a></li>
-                        <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
-                                class="footer-link">Twitter</a></li>
+                    <h4 class="footer-heading">Keahlian &amp; Github</h4>
+                    <ul class="footer-links">
+                        <li><a href="#stack">Core Stack</a></li>
+                        <li><a href="#github">Aktivitas GitHub</a></li>
+                        <li><a href="#kapabilitas">Kapabilitas Teknis</a></li>
+                        <li><a href="#kontak">Mari Terhubung</a></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="footer-bottom">
+            <div class="footer-bottom-bar">
                 <p class="copyright">© 2026 Alya Dijayanti. Hak Cipta Dilindungi.</p>
-                <p class="made-with">Dibuat dengan dedikasi & kode murni.</p>
+                <p class="built-with">Dirancang dengan Presisi &amp; Kode Murni Modern.</p>
             </div>
         </div>
     </footer>
 
-    <script src="script.js?v=1.3"></script>
+    <script src="script.js?v=2.0"></script>
 </body>
 
 </html>
