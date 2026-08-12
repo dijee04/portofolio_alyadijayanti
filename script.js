@@ -39,14 +39,14 @@ function initPhotoCardFlip() {
 }
 
 /**
- * Mengelola efek menyembur (burst out), penarikan interaktif (Draggable Physics), dan paralaks kursor
+ * Mengelola efek menyembur (burst out) dari belakang tulisan ALYA DIJAYANTI dan paralaks kursor tetikus
  */
 function initPixelParallax() {
     const heroSection = document.getElementById('hero');
     const heroTitleGroup = document.querySelector('.hero-title-group');
-    const floatingAssets = document.querySelectorAll('.floating-interactive-asset');
+    const pixelDecors = document.querySelectorAll('.floating-pixel-decor');
 
-    if (!heroSection || floatingAssets.length === 0) return;
+    if (!heroSection || pixelDecors.length === 0) return;
 
     // Pemicu animasi menyembur otomatis saat halaman dimuat (setelah 250ms)
     setTimeout(() => {
@@ -62,46 +62,6 @@ function initPixelParallax() {
         });
     }
 
-    // Penanganan Fitur Tarik Elemen (Draggable Physics Interaktif)
-    floatingAssets.forEach(asset => {
-        let isDragging = false;
-        let startX, startY, initialTranslateX = 0, initialTranslateY = 0;
-
-        asset.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            startX = e.clientX;
-            startY = e.clientY;
-            asset.style.transition = 'none';
-            asset.style.zIndex = '100';
-            e.preventDefault();
-        });
-
-        window.addEventListener('mousemove', (e) => {
-            if (!isDragging) return;
-            const dx = e.clientX - startX;
-            const dy = e.clientY - startY;
-            asset.style.transform = `translate3d(${initialTranslateX + dx}px, ${initialTranslateY + dy}px, 0) scale(1.1)`;
-        });
-
-        window.addEventListener('mouseup', (e) => {
-            if (!isDragging) return;
-            isDragging = false;
-            asset.style.transition = 'transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
-            asset.style.transform = `translate3d(0, 0, 0) scale(1)`;
-        });
-
-        // Tautan klik cepat untuk kartu proyek melayang
-        const cardPill = asset.querySelector('.float-card-pill');
-        if (cardPill) {
-            cardPill.addEventListener('click', (e) => {
-                const proyekSection = document.getElementById('proyek');
-                if (proyekSection) {
-                    proyekSection.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        }
-    });
-
     // Efek pergerakan kursor interaktif & dorongan magnetik saat kursor bergerak
     heroSection.addEventListener('mousemove', (e) => {
         if (!heroSection.classList.contains('burst-active')) return;
@@ -113,21 +73,21 @@ function initPixelParallax() {
         const moveX = (clientX - centerX) / centerX;
         const moveY = (clientY - centerY) / centerY;
 
-        floatingAssets.forEach((asset, index) => {
-            if (asset.matches(':hover')) return;
+        pixelDecors.forEach((decor, index) => {
+            if (decor.matches(':hover')) return;
 
-            const speed = parseFloat(asset.getAttribute('data-speed')) || 1;
+            const speed = parseFloat(decor.getAttribute('data-speed')) || 1;
             const dir = (index % 2 === 0) ? 1 : -1;
-            const offsetX = moveX * 36 * speed * dir;
-            const offsetY = moveY * 36 * speed * dir;
+            const offsetX = moveX * 32 * speed * dir;
+            const offsetY = moveY * 32 * speed * dir;
 
-            asset.style.transform = `translate3d(${offsetX}px, ${offsetY}px, 0) scale(1)`;
+            decor.style.transform = `translate3d(${offsetX}px, ${offsetY}px, 0) scale(1)`;
         });
     });
 
     heroSection.addEventListener('mouseleave', () => {
-        floatingAssets.forEach(asset => {
-            asset.style.transform = `translate3d(0, 0, 0) scale(1)`;
+        pixelDecors.forEach(decor => {
+            decor.style.transform = `translate3d(0, 0, 0) scale(1)`;
         });
     });
 }
