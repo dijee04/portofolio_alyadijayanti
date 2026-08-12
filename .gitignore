@@ -1,0 +1,14 @@
+# Abaikan berkas variabel lingkungan agar kunci rahasia tidak bocor ke publik
+.env
+
+# Abaikan modul bawaan jika nanti menggunakan npm/Node.js
+node_modules/
+
+# Abaikan berkas log sistem
+npm-debug.log
+yarn-error.log
+*.log
+
+# Abaikan berkas sistem operasi
+.DS_Store
+Thumbs.db
