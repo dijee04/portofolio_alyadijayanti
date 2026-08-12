@@ -21,18 +21,91 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 6. Inisialisasi Efek Paralaks Aset Piksel Melayang
     initPixelParallax();
+
+    // 7. Inisialisasi 3D Card Flip Kartu Foto Profil
+    initPhotoCardFlip();
 });
 
 /**
- * Membuat efek paralaks halus pada aset piksel melayang berdasarkan gerak tetikus
+ * Mengelola interaksi klik balik kartu 3D Card Flip pada kartu foto profil
+ */
+function initPhotoCardFlip() {
+    const flipCard = document.getElementById('photo-flip-card');
+    if (!flipCard) return;
+
+    flipCard.addEventListener('click', () => {
+        flipCard.classList.toggle('is-flipped');
+    });
+}
+
+/**
+ * Mengelola efek menyembur (burst out), penarikan interaktif (Draggable Physics), dan paralaks kursor
  */
 function initPixelParallax() {
     const heroSection = document.getElementById('hero');
-    const pixelDecors = document.querySelectorAll('.floating-pixel-decor');
+    const heroTitleGroup = document.querySelector('.hero-title-group');
+    const floatingAssets = document.querySelectorAll('.floating-interactive-asset');
 
-    if (!heroSection || pixelDecors.length === 0) return;
+    if (!heroSection || floatingAssets.length === 0) return;
 
+    // Pemicu animasi menyembur otomatis saat halaman dimuat (setelah 250ms)
+    setTimeout(() => {
+        heroSection.classList.add('burst-active');
+    }, 250);
+
+    // Memicu ulang efek menyembur saat kursor disorot pada tulisan ALYA DIJAYANTI
+    if (heroTitleGroup) {
+        heroTitleGroup.addEventListener('mouseenter', () => {
+            heroSection.classList.remove('burst-active');
+            void heroSection.offsetWidth; // Force reflow
+            heroSection.classList.add('burst-active');
+        });
+    }
+
+    // Penanganan Fitur Tarik Elemen (Draggable Physics Interaktif)
+    floatingAssets.forEach(asset => {
+        let isDragging = false;
+        let startX, startY, initialTranslateX = 0, initialTranslateY = 0;
+
+        asset.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.clientX;
+            startY = e.clientY;
+            asset.style.transition = 'none';
+            asset.style.zIndex = '100';
+            e.preventDefault();
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            const dx = e.clientX - startX;
+            const dy = e.clientY - startY;
+            asset.style.transform = `translate3d(${initialTranslateX + dx}px, ${initialTranslateY + dy}px, 0) scale(1.1)`;
+        });
+
+        window.addEventListener('mouseup', (e) => {
+            if (!isDragging) return;
+            isDragging = false;
+            asset.style.transition = 'transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            asset.style.transform = `translate3d(0, 0, 0) scale(1)`;
+        });
+
+        // Tautan klik cepat untuk kartu proyek melayang
+        const cardPill = asset.querySelector('.float-card-pill');
+        if (cardPill) {
+            cardPill.addEventListener('click', (e) => {
+                const proyekSection = document.getElementById('proyek');
+                if (proyekSection) {
+                    proyekSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        }
+    });
+
+    // Efek pergerakan kursor interaktif & dorongan magnetik saat kursor bergerak
     heroSection.addEventListener('mousemove', (e) => {
+        if (!heroSection.classList.contains('burst-active')) return;
+
         const { clientX, clientY } = e;
         const centerX = window.innerWidth / 2;
         const centerY = window.innerHeight / 2;
@@ -40,17 +113,21 @@ function initPixelParallax() {
         const moveX = (clientX - centerX) / centerX;
         const moveY = (clientY - centerY) / centerY;
 
-        pixelDecors.forEach(decor => {
-            const speed = parseFloat(decor.getAttribute('data-speed')) || 1;
-            const offsetX = moveX * 25 * speed;
-            const offsetY = moveY * 25 * speed;
-            decor.style.transform = `translate3d(${offsetX}px, ${offsetY}px, 0)`;
+        floatingAssets.forEach((asset, index) => {
+            if (asset.matches(':hover')) return;
+
+            const speed = parseFloat(asset.getAttribute('data-speed')) || 1;
+            const dir = (index % 2 === 0) ? 1 : -1;
+            const offsetX = moveX * 36 * speed * dir;
+            const offsetY = moveY * 36 * speed * dir;
+
+            asset.style.transform = `translate3d(${offsetX}px, ${offsetY}px, 0) scale(1)`;
         });
     });
 
     heroSection.addEventListener('mouseleave', () => {
-        pixelDecors.forEach(decor => {
-            decor.style.transform = `translate3d(0, 0, 0)`;
+        floatingAssets.forEach(asset => {
+            asset.style.transform = `translate3d(0, 0, 0) scale(1)`;
         });
     });
 }

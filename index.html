@@ -63,30 +63,30 @@
         <section class="hero-section" id="hero">
             <div class="hero-bg-glow"></div>
 
-            <!-- Floating Pixel Decorative Assets (Menggunakan assets/assets_cute & Hanya 1 Elemen Hati) -->
+            <!-- Floating Pixel Decorative Assets (8 Stiker Piksel Melayang Bersih & Tepat 1 Hati) -->
             <div class="floating-pixel-decor decor-top-left" data-speed="1.5" title="Pixel Heart">
-                <img src="assets/assets_cute/pixel_heart.png" alt="Aset Piksel Hati Melayang" class="pixel-asset float-anim-1">
+                <img src="assets/pixel_heart.png" alt="Aset Piksel Hati Melayang" class="pixel-asset float-anim-1">
             </div>
             <div class="floating-pixel-decor decor-top-mid-left" data-speed="-1.4" title="Pixel Strawberry">
-                <img src="assets/assets_cute/pixel_strawberry.png" alt="Aset Piksel Stroberi Melayang" class="pixel-asset float-anim-3">
+                <img src="assets/pixel_strawberry.png" alt="Aset Piksel Stroberi Melayang" class="pixel-asset float-anim-3">
             </div>
             <div class="floating-pixel-decor decor-top-right" data-speed="-1.2" title="Pixel Bear">
-                <img src="assets/assets_cute/pixel_bear.png" alt="Aset Piksel Beruang Melayang" class="pixel-asset float-anim-2">
+                <img src="assets/pixel_bear.png" alt="Aset Piksel Beruang Melayang" class="pixel-asset float-anim-2">
             </div>
             <div class="floating-pixel-decor decor-mid-left" data-speed="1.8" title="Pixel Console">
-                <img src="assets/assets_cute/pixel_console.png" alt="Aset Piksel Konsol Melayang" class="pixel-asset float-anim-1">
+                <img src="assets/pixel_console.png" alt="Aset Piksel Konsol Melayang" class="pixel-asset float-anim-1">
             </div>
             <div class="floating-pixel-decor decor-mid-right" data-speed="-1.6" title="Pixel Love Letter">
-                <img src="assets/assets_cute/pixel_letter.png" alt="Aset Piksel Surat Hati Melayang" class="pixel-asset float-anim-2">
+                <img src="assets/pixel_letter.png" alt="Aset Piksel Surat Hati Melayang" class="pixel-asset float-anim-2">
             </div>
             <div class="floating-pixel-decor decor-mid-far-right" data-speed="2.0" title="Pixel Bubble">
-                <img src="assets/assets_cute/pixel_bubble.png" alt="Aset Piksel Gelembung Melayang" class="pixel-asset float-anim-3">
+                <img src="assets/pixel_bubble.png" alt="Aset Piksel Gelembung Melayang" class="pixel-asset float-anim-3">
             </div>
             <div class="floating-pixel-decor decor-bottom-left" data-speed="-1.8" title="Pixel Cake">
-                <img src="assets/assets_cute/pixel_cake.png" alt="Aset Piksel Kue Melayang" class="pixel-asset float-anim-3">
+                <img src="assets/pixel_cake.png" alt="Aset Piksel Kue Melayang" class="pixel-asset float-anim-3">
             </div>
             <div class="floating-pixel-decor decor-bottom-right" data-speed="1.2" title="Pixel Game">
-                <img src="assets/assets_cute/pixel_game.png" alt="Aset Piksel Game Melayang" class="pixel-asset float-anim-1">
+                <img src="assets/pixel_game.png" alt="Aset Piksel Game Melayang" class="pixel-asset float-anim-1">
             </div>
 
             <div class="hero-container">
@@ -164,18 +164,32 @@
                     
                     <!-- Kolom Kiri: Foto Bertumpuk & Statistik -->
                     <div class="about-col-left">
-                        <div class="photo-stack-wrapper">
-                            <div class="photo-card card-top">
-                                <img src="assets/profile.png" alt="Alya Dijayanti Foto Utama" class="stack-img">
-                                <div class="photo-tag">
-                                    <span class="tag-icon">📍</span> Tangerang, Indonesia
+                        <!-- Kartu Foto Tunggal Interaktif 3D Flip Card -->
+                        <div class="single-flip-card-container" id="photo-flip-card" title="Klik untuk membalik foto profil 3D">
+                            <div class="flip-card-inner">
+                                
+                                <!-- Sisi Depan (Front Face - Profil 1) -->
+                                <div class="flip-card-face flip-card-front">
+                                    <img src="assets/profile.png" alt="Alya Dijayanti Foto Utama" class="flip-card-img">
+                                    <div class="photo-tag">
+                                        <span class="tag-icon">📍</span> Tangerang, Indonesia
+                                    </div>
+                                    <div class="flip-hint-badge">
+                                        <span class="flip-icon">🔄</span> Klik Balik
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="photo-card card-bottom">
-                                <img src="assets/profile2.png" alt="Alya Dijayanti Foto Kerja" class="stack-img">
-                                <div class="photo-tag-badge">
-                                    <span class="badge-dot-active"></span> Software Engineer
+
+                                <!-- Sisi Belakang (Back Face - Profil 2) -->
+                                <div class="flip-card-face flip-card-back">
+                                    <img src="assets/profile2.png" alt="Alya Dijayanti Foto Kerja" class="flip-card-img">
+                                    <div class="photo-tag-badge">
+                                        <span class="badge-dot-active"></span> Software Engineer &amp; AI
+                                    </div>
+                                    <div class="flip-hint-badge">
+                                        <span class="flip-icon">🔄</span> Depan
+                                    </div>
                                 </div>
+
                             </div>
                         </div>
 
