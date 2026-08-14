@@ -71,9 +71,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         // Progress overlap dari 0 (belum tertimpa) hingga 1 (tertimpa penuh)
                         const overlapProgress = Math.min(1, Math.max(0, (viewportHeight - distanceToNext) / OVERLAP_DISTANCE));
 
-                        state.targetScale = 1 - (overlapProgress * 0.12); // Mengecil hingga 0.88
-                        state.targetOpacity = 1 - (overlapProgress * 0.95); // Memudar hingga 0.05
-                        state.targetTranslateY = -overlapProgress * 70; // Terangkat -70px
+                        state.targetScale = 1 - (overlapProgress * 0.08); // Mengecil hingga 0.92
+                        state.targetOpacity = 1 - (overlapProgress * 0.7); // Memudar secara halus tanpa hilangnya kontras
+                        state.targetTranslateY = -overlapProgress * 45; // Terangkat -45px
                     } else {
                         state.targetScale = 1;
                         state.targetOpacity = 1;

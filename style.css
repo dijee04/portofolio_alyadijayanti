@@ -318,14 +318,28 @@ img {
    ========================================================================== */
 .hero-section {
     position: relative;
-    padding-top: calc(var(--nav-height) + 60px);
-    padding-bottom: 90px;
+    width: 100%;
+    padding-top: calc(var(--nav-height) + 16px);
+    padding-bottom: 60px;
     background-color: var(--color-bg-light);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     overflow: hidden;
+}
+
+.text-fluid-gradient {
+    color: #0f172a !important;
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    -webkit-text-fill-color: #0f172a !important;
+    text-shadow: 0 0 32px rgba(255, 61, 143, 0.75),
+                 0 0 65px rgba(255, 46, 147, 0.55),
+                 0 0 95px rgba(9, 152, 161, 0.4);
+    filter: drop-shadow(0 0 28px rgba(255, 61, 143, 0.65));
+    display: inline-block;
 }
 
 /* Floating Pixel Decorative Assets (Penyemburan dari Belakang Tulisan & Melayang) */
@@ -619,19 +633,75 @@ img {
 }
 
 .hero-title-group {
+    width: 100%;
     margin-bottom: 24px;
     line-height: 0.9;
     position: relative;
-    z-index: 5; /* Judul berada di depan ikon piksel yang menyembur dari belakang */
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px 0;
 }
 
+/* Teks ALYA: Bersih, Hitam Solid, Tanpa Gradien Latar Belakang */
 .hero-name-main {
     font-family: var(--font-heading);
     font-size: clamp(3.5rem, 9vw, 7.5rem);
     font-weight: 900;
     letter-spacing: -2px;
-    color: var(--color-text-dark);
+    color: #0f172a !important;
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    -webkit-text-fill-color: #0f172a !important;
     text-transform: uppercase;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    z-index: 5;
+    text-shadow: none !important;
+    filter: none !important;
+}
+
+/* Wadah & Glow Efek KHUSUS untuk Teks 'DIJAYANTI' */
+.dijayanti-glow-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4px;
+    z-index: 4;
+}
+
+.dijayanti-interactive-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 680px;
+    height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(255, 61, 143, 0.65) 0%,
+        rgba(255, 46, 147, 0.4) 45%,
+        rgba(168, 85, 247, 0.25) 70%,
+        transparent 88%
+    );
+    filter: blur(120px);
+    opacity: 0.85;
+    pointer-events: none;
+    z-index: 1;
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.5s ease;
+}
+
+.dijayanti-glow-wrapper:hover .dijayanti-interactive-glow {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.08);
 }
 
 .hero-name-outlined {
@@ -642,6 +712,16 @@ img {
     -webkit-text-stroke: 2px var(--color-text-dark);
     color: transparent;
     text-transform: uppercase;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    transition: -webkit-text-stroke 0.5s ease, text-shadow 0.5s ease;
+}
+
+.dijayanti-glow-wrapper:hover .hero-name-outlined {
+    -webkit-text-stroke: 2.5px #b32b64;
+    text-shadow: 0 0 35px rgba(255, 61, 143, 0.6);
 }
 
 .hero-subtitle-box {
@@ -778,9 +858,59 @@ img {
 }
 
 /* ==========================================================================
+   SISTEM GLOW AMBIENT PER-SEKSI (RAPAT, SIMETRIS, & MENEMPEL DI KONTEN)
+   ========================================================================== */
+.section-ambient-glow {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.42;
+    transition: opacity 0.4s ease;
+}
+
+.glow-top-center {
+    top: 20px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 650px !important;
+    height: 320px !important;
+}
+
+.glow-top-left {
+    top: 25px !important;
+    left: 8% !important;
+    width: 480px !important;
+    height: 320px !important;
+}
+
+.glow-top-right {
+    top: 25px !important;
+    right: 8% !important;
+    width: 480px !important;
+    height: 320px !important;
+}
+
+.glow-pink-accent {
+    background: radial-gradient(circle, rgba(255, 61, 143, 0.48) 0%, rgba(255, 46, 147, 0.2) 60%, transparent 80%);
+}
+
+.glow-teal-accent {
+    background: radial-gradient(circle, rgba(9, 152, 161, 0.42) 0%, rgba(9, 152, 161, 0.18) 60%, transparent 80%);
+}
+
+.glow-purple-accent {
+    background: radial-gradient(circle, rgba(168, 85, 247, 0.42) 0%, rgba(168, 85, 247, 0.18) 60%, transparent 80%);
+}
+
+/* ==========================================================================
    4. Seksi 1: Tentang Saya (Kartu Foto 3D Flip Card Tunggal)
    ========================================================================== */
 .about-section {
+    position: relative;
+    overflow: hidden;
+    padding: 70px 0;
     background-color: #ffffff;
     border-bottom: 1px solid var(--color-border-light);
 }
@@ -1181,6 +1311,9 @@ img {
    6. Seksi 3: Pengalaman Profesional (Latar Terang)
    ========================================================================== */
 .experience-section {
+    position: relative;
+    overflow: hidden;
+    padding: 75px 0;
     background-color: var(--color-bg-light);
     border-bottom: 1px solid var(--color-border-light);
 }
@@ -1639,6 +1772,9 @@ img {
    9. Seksi 6: Kapabilitas Teknis (Latar Terang & Kartu Gelap Khusus)
    ========================================================================== */
 .capabilities-section {
+    position: relative;
+    overflow: hidden;
+    padding: 75px 0 90px 0;
     background-color: var(--color-bg-light);
 }
 
@@ -2293,10 +2429,17 @@ img {
     justify-content: flex-start;
     padding: calc(var(--nav-height) + 20px) 24px 60px 24px;
     box-sizing: border-box;
-    background: transparent;
+    background: #07070d; /* Latar belakang solid gelap agar menutup seksi sebelumnya secara bersih */
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 -30px 70px rgba(0, 0, 0, 0.85);
     transform-origin: center top;
     will-change: transform, opacity;
     transition: none; /* Controlled via Spring Physics JS Loop */
+}
+
+.sticky-project-section:first-child {
+    border-top: none;
+    box-shadow: none;
 }
 
 .sticky-section-inner {
