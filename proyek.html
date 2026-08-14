@@ -7,155 +7,388 @@
     <title>Karya & Proyek — Alya Dijayanti</title>
     <meta name="description"
         content="Galeri lengkap karya dan proyek pengembangan produk digital oleh Alya Dijayanti. Saring berdasarkan keahlian teknis.">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;700;900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;700;900&family=Rubik+Iso&family=Space+Grotesk:wght@500;700&display=swap"
         rel="stylesheet">
+
     <link rel="icon" type="image/png" href="assets/pixel_heart.png">
-    <link rel="stylesheet" href="style.css?v=1.3">
+    <link rel="stylesheet" href="style.css?v=2.1">
 </head>
 
 <body>
 
-    <!-- Navigasi / Header Atas -->
+    <!-- 1. Header / Navigasi Melayang (Floating Pill Nav) -->
     <header class="top-nav">
         <div class="nav-container">
-            <a href="index.html" class="nav-brand">Alya</a>
-            <nav class="nav-menu">
-                <a href="index.html#layanan" class="nav-link">Layanan</a>
-                <a href="index.html#proyek" class="nav-link">Proyek</a>
-                <a href="index.html#prestasi" class="nav-link">Pencapaian</a>
-                <a href="index.html#pemikiran" class="nav-link">Pemikiran</a>
-                <a href="index.html#kontak" class="nav-btn">Mari Bicara</a>
+            <a href="index.html" class="nav-brand">
+                <span class="brand-logo">AD.</span>
+                <span class="brand-name">Alya Dijayanti</span>
+            </a>
+
+            <nav class="nav-pill-menu">
+                <a href="index.html#hero" class="nav-link">Beranda</a>
+                <a href="index.html#tentang" class="nav-link">Tentang</a>
+                <a href="proyek.html" class="nav-link active" style="color: var(--color-text-dark); background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">Proyek</a>
+                <a href="index.html#pengalaman" class="nav-link">Pengalaman</a>
+                <a href="index.html#stack" class="nav-link">Stack</a>
+                <a href="index.html#kapabilitas" class="nav-link">Kapabilitas</a>
             </nav>
+
+            <div class="nav-cta-wrapper">
+                <a href="index.html#kontak" class="nav-cta-btn">
+                    <span class="status-dot"></span>
+                    Mari Bicara
+                </a>
+            </div>
         </div>
     </header>
+
+    <!-- Floating Quick Contact Widget -->
+    <div class="floating-widget">
+        <button class="widget-btn" id="widget-toggle" title="Menu Kontak Cepat">
+            <span class="widget-icon">💬</span>
+        </button>
+        <div class="widget-menu hidden" id="widget-dropdown">
+            <a href="mailto:alya.dijayanti@example.com" class="widget-item">✉️ Surel</a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="widget-item">🔗 LinkedIn</a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="widget-item">💻 GitHub</a>
+        </div>
+    </div>
 
     <!-- Main Content -->
     <main>
         <!-- Project Hero Section -->
         <section class="project-header-section">
-            <div class="section-container">
+            <!-- Dynamic Fluid Glow Background Orbs -->
+            <div class="fluid-glow-orb orb-pink" style="top: -80px; left: 5%; width: 480px; height: 480px;"></div>
+            <div class="fluid-glow-orb orb-purple" style="top: 60px; right: 8%; width: 420px; height: 420px;"></div>
+            <div class="fluid-glow-orb orb-teal" style="bottom: 10px; left: 35%; width: 380px; height: 380px;"></div>
+            <div class="fluid-glow-orb orb-blue" style="bottom: -50px; right: 25%; width: 340px; height: 340px;"></div>
+
+            <div class="section-container" style="position: relative; z-index: 2;">
                 <a href="index.html" class="back-btn">
                     <span class="arrow-left">←</span> Kembali ke Beranda
                 </a>
-                <h1 class="project-header-title" style="margin-top: 2rem;">Karya &amp; Proyek</h1>
+                
+                <div class="hero-badge-pill-fluid" style="margin-top: 1.8rem; margin-bottom: 1.2rem;">
+                    <span>✦</span> PORTOFOLIO SHOWCASE 2026
+                </div>
+
+                <h1 class="project-header-title">
+                    <span class="text-fluid-gradient">KARYA &amp; PROYEK</span>
+                </h1>
                 <p class="project-header-desc">
-                    Jelajahi portofolio proyek pengembangan web, desain antarmuka, dan sistem terintegrasi yang telah saya bangun.
+                    Jelajahi ekosistem aplikasi web, arsitektur antarmuka pengguna, sistem terukur, dan integrasi API terenkripsi yang telah saya rancang dengan presisi serta standar estetika masa kini.
                 </p>
 
-                <!-- Filter Bar -->
-                <div class="filter-bar">
-                    <button class="filter-btn active" data-category="all">Semua</button>
-                    <button class="filter-btn" data-category="frontend">Frontend</button>
-                    <button class="filter-btn" data-category="fullstack">Fullstack</button>
-                    <button class="filter-btn" data-category="uiux">UI/UX</button>
-                    <button class="filter-btn" data-category="api">Integrasi API</button>
+                <!-- Toolbar Pencarian & Filter Glassy Integrated -->
+                <div class="project-toolbar-glass">
+                    <div class="search-filter-row">
+                        <!-- Bilah Pencarian Real-Time -->
+                        <div class="search-box-glass">
+                            <span class="search-icon">🔍</span>
+                            <input type="text" id="project-search-input" class="search-input" placeholder="Cari berdasarkan nama proyek, teknologi, atau peran..." autocomplete="off">
+                            <button id="search-clear-btn" class="search-clear-btn" title="Hapus Pencarian">✕</button>
+                        </div>
+
+                        <!-- Tombol Filter Kategori -->
+                        <div class="filter-bar">
+                            <button class="filter-btn active" data-category="all">
+                                Semua <span class="filter-count">6</span>
+                            </button>
+                            <button class="filter-btn" data-category="frontend">
+                                Frontend <span class="filter-count">3</span>
+                            </button>
+                            <button class="filter-btn" data-category="fullstack">
+                                Fullstack <span class="filter-count">3</span>
+                            </button>
+                            <button class="filter-btn" data-category="uiux">
+                                UI/UX <span class="filter-count">2</span>
+                            </button>
+                            <button class="filter-btn" data-category="api">
+                                Integrasi API <span class="filter-count">3</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Baris Status Hasil Pencarian -->
+                    <div class="search-status-bar">
+                        <span id="results-count-text">Menampilkan <strong class="results-highlight">6</strong> dari <strong class="results-highlight">6</strong> karya proyek</span>
+                        <span class="search-tip">✦ Klik pada kartu untuk membuka detail eksplorasi</span>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Projects Grid Section -->
-        <section class="projects-section" style="padding-top: 0;">
+        <section class="projects-section" style="padding-top: 20px;">
             <div class="section-container">
                 <div class="projects-grid" id="projects-gallery">
-                    <!-- Project 1: Payroll Enterprise (Featured/Wide) -->
-                    <div class="project-card wide card-pink" data-categories="fullstack uiux">
+
+                    <!-- Project 1: Payroll Enterprise (Featured Showcase) -->
+                    <div class="project-card wide glass-card-fluid" 
+                         data-categories="fullstack uiux"
+                         data-search="payroll enterprise system sistem penggajian karyawan finance rbac node.js postgresql fullstack dev ux"
+                         data-title="Payroll Enterprise System"
+                         data-cat="Fullstack & UX"
+                         data-desc="Sistem manajemen penggajian karyawan skala perusahaan dengan pembuatan laporan otomatis, kontrol akses bertingkat (RBAC), serta pemrosesan slip gaji terpusat."
+                         data-img="assets/project_payroll.png"
+                         data-tags="Fullstack,Finance,RBAC System,Node.js,PostgreSQL">
                         <div class="project-image-container">
+                            <span class="project-category-badge">✦ Featured Fullstack</span>
+                            <div class="project-quick-view-badge" title="Pratinjau Detail">👁️</div>
                             <img src="assets/project_payroll.png" alt="Payroll Enterprise Project Mockup" class="project-img">
                         </div>
                         <div class="project-info">
-                            <h3 class="project-title">Payroll Enterprise</h3>
-                            <p class="project-meta">Sistem Penggajian & Kelola Karyawan / Fullstack Dev & UX</p>
+                            <div>
+                                <div class="project-tags">
+                                    <span class="project-tag-pill">Fullstack</span>
+                                    <span class="project-tag-pill">Finance</span>
+                                    <span class="project-tag-pill">Node.js</span>
+                                    <span class="project-tag-pill">PostgreSQL</span>
+                                </div>
+                                <h3 class="project-title">Payroll Enterprise System</h3>
+                                <p class="project-meta">Sistem Penggajian &amp; Kelola Karyawan / Fullstack Dev &amp; UX</p>
+                            </div>
+                            <div class="project-action-bar">
+                                <span class="project-detail-link">Eksplorasi Detail <span class="project-action-arrow">➔</span></span>
+                                <span class="project-year-badge">2026</span>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Project 2: Domus -->
-                    <div class="project-card card-teal" data-categories="frontend uiux">
+                    <div class="project-card glass-card-fluid" 
+                         data-categories="frontend uiux"
+                         data-search="domus minimalis property properti rumah react figma design system ui/ux frontend"
+                         data-title="Domus Minimalis Property"
+                         data-cat="UI/UX & Frontend"
+                         data-desc="Platform pencarian dan eksplorasi properti rumah minimalis dengan antarmuka adaptif, filter real-time intuitif, dan visualisasi layout 3D yang jernih."
+                         data-img="assets/project_domus.png"
+                         data-tags="UI/UX,React,Design System,Figma">
                         <div class="project-image-container">
+                            <span class="project-category-badge">UI/UX &amp; Frontend</span>
+                            <div class="project-quick-view-badge" title="Pratinjau Detail">👁️</div>
                             <img src="assets/project_domus.png" alt="Domus Project Mockup" class="project-img">
                         </div>
                         <div class="project-info">
-                            <h3 class="project-title">Domus</h3>
-                            <p class="project-meta">Pencarian Rumah Minimalis / Frontend & UX</p>
+                            <div>
+                                <div class="project-tags">
+                                    <span class="project-tag-pill">Frontend</span>
+                                    <span class="project-tag-pill">UI/UX</span>
+                                    <span class="project-tag-pill">React</span>
+                                </div>
+                                <h3 class="project-title">Domus Minimalis Properti</h3>
+                                <p class="project-meta">Pencarian Rumah Minimalis / Frontend &amp; UX</p>
+                            </div>
+                            <div class="project-action-bar">
+                                <span class="project-detail-link">Eksplorasi Detail <span class="project-action-arrow">➔</span></span>
+                                <span class="project-year-badge">2026</span>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Project 3: Najm -->
-                    <div class="project-card card-purple" data-categories="fullstack">
+                    <!-- Project 3: Najm Telemetry -->
+                    <div class="project-card glass-card-fluid" 
+                         data-categories="fullstack api"
+                         data-search="najm astronomical telemetry astronomi python chart.js rest api integration dashboard fullstack"
+                         data-title="Najm Astronomical Telemetry"
+                         data-cat="Fullstack & API"
+                         data-desc="Dashboard pemantauan telemetri astronomi real-time yang mengintegrasikan REST API observatorium untuk visualisasi sinyal antariksa dan data cuaca kosmik."
+                         data-img="assets/project_najm.png"
+                         data-tags="Fullstack,API Integration,Python,Telemetry,Chart.js">
                         <div class="project-image-container">
+                            <span class="project-category-badge">Fullstack &amp; API</span>
+                            <div class="project-quick-view-badge" title="Pratinjau Detail">👁️</div>
                             <img src="assets/project_najm.png" alt="Najm Project Mockup" class="project-img">
                         </div>
                         <div class="project-info">
-                            <h3 class="project-title">Najm</h3>
-                            <p class="project-meta">Dashboard Telemetri Astronomi / Fullstack Dev</p>
+                            <div>
+                                <div class="project-tags">
+                                    <span class="project-tag-pill">Fullstack</span>
+                                    <span class="project-tag-pill">REST API</span>
+                                    <span class="project-tag-pill">Python</span>
+                                </div>
+                                <h3 class="project-title">Najm Astronomical Telemetry</h3>
+                                <p class="project-meta">Dashboard Telemetri Astronomi / Fullstack Dev &amp; API</p>
+                            </div>
+                            <div class="project-action-bar">
+                                <span class="project-detail-link">Eksplorasi Detail <span class="project-action-arrow">➔</span></span>
+                                <span class="project-year-badge">2025</span>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Project 4: Kivi -->
-                    <div class="project-card card-pink" data-categories="api">
+                    <!-- Project 4: Kivi SaaS -->
+                    <div class="project-card glass-card-fluid" 
+                         data-categories="api fullstack"
+                         data-search="kivi financial saas manajemen keuangan pribadi perbankan terenkripsi api react express postgresql"
+                         data-title="Kivi Financial SaaS"
+                         data-cat="SaaS & API"
+                         data-desc="Aplikasi SaaS manajemen keuangan pribadi dengan integrasi API perbankan terenkripsi, pencatatan otomatis pengeluaran, dan grafik proyeksi arus kas."
+                         data-img="assets/project_kivi.png"
+                         data-tags="SaaS,Integrasi API,React,Express,PostgreSQL">
                         <div class="project-image-container">
+                            <span class="project-category-badge">SaaS &amp; API</span>
+                            <div class="project-quick-view-badge" title="Pratinjau Detail">👁️</div>
                             <img src="assets/project_kivi.png" alt="Kivi Project Mockup" class="project-img">
                         </div>
                         <div class="project-info">
-                            <h3 class="project-title">Kivi</h3>
-                            <p class="project-meta">SaaS Manajemen Keuangan Pribadi / Integrasi API</p>
+                            <div>
+                                <div class="project-tags">
+                                    <span class="project-tag-pill">Integrasi API</span>
+                                    <span class="project-tag-pill">Financial</span>
+                                    <span class="project-tag-pill">React</span>
+                                </div>
+                                <h3 class="project-title">Kivi Financial SaaS</h3>
+                                <p class="project-meta">SaaS Manajemen Keuangan Pribadi / Integrasi API</p>
+                            </div>
+                            <div class="project-action-bar">
+                                <span class="project-detail-link">Eksplorasi Detail <span class="project-action-arrow">➔</span></span>
+                                <span class="project-year-badge">2025</span>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Project 5: FrontWing -->
-                    <div class="project-card card-blue" data-categories="frontend">
+                    <div class="project-card glass-card-fluid" 
+                         data-categories="frontend"
+                         data-search="frontwing workspace kolaborasi tim kanban drag and drop react app frontend engineering"
+                         data-title="FrontWing Workspace"
+                         data-cat="Frontend App"
+                         data-desc="Aplikasi web manajemen alur kerja dan kolaborasi tim dengan antarmuka modular responsif, papan Kanban interaktif, dan pemantauan tugas real-time."
+                         data-img="assets/project_frontwing.png"
+                         data-tags="Frontend,React App,Drag & Drop,Workflow">
                         <div class="project-image-container">
+                            <span class="project-category-badge">Frontend Engineering</span>
+                            <div class="project-quick-view-badge" title="Pratinjau Detail">👁️</div>
                             <img src="assets/project_frontwing.png" alt="FrontWing Project Mockup" class="project-img">
                         </div>
                         <div class="project-info">
-                            <h3 class="project-title">FrontWing</h3>
-                            <p class="project-meta">Kolaborasi Tim & Manajemen Alur Kerja / React App</p>
+                            <div>
+                                <div class="project-tags">
+                                    <span class="project-tag-pill">Frontend</span>
+                                    <span class="project-tag-pill">React</span>
+                                    <span class="project-tag-pill">Workflow</span>
+                                </div>
+                                <h3 class="project-title">FrontWing Workspace</h3>
+                                <p class="project-meta">Kolaborasi Tim &amp; Manajemen Alur Kerja / React App</p>
+                            </div>
+                            <div class="project-action-bar">
+                                <span class="project-detail-link">Eksplorasi Detail <span class="project-action-arrow">➔</span></span>
+                                <span class="project-year-badge">2025</span>
+                            </div>
                         </div>
                     </div>
+
+                    <!-- Project 6: DearSeana Store -->
+                    <div class="project-card glass-card-fluid" 
+                         data-categories="frontend api"
+                         data-search="dearseana bakery store toko kuliner digital midtrans api payment gateway javascript ecommerce"
+                         data-title="DearSeana Bakery Store"
+                         data-cat="Ecommerce & API"
+                         data-desc="Platform toko kuliner digital berkinerja tinggi yang terintegrasi dengan Payment Gateway MidTrans untuk pemrosesan transaksi otomatis dan notifikasi instan."
+                         data-img="assets/blog_art.png"
+                         data-tags="Ecommerce,Midtrans API,JavaScript,HTML5,CSS3">
+                        <div class="project-image-container">
+                            <span class="project-category-badge">Ecommerce &amp; API</span>
+                            <div class="project-quick-view-badge" title="Pratinjau Detail">👁️</div>
+                            <img src="assets/blog_art.png" alt="DearSeana Project Mockup" class="project-img">
+                        </div>
+                        <div class="project-info">
+                            <div>
+                                <div class="project-tags">
+                                    <span class="project-tag-pill">Integrasi API</span>
+                                    <span class="project-tag-pill">Ecommerce</span>
+                                    <span class="project-tag-pill">Midtrans</span>
+                                </div>
+                                <h3 class="project-title">DearSeana Bakery Store</h3>
+                                <p class="project-meta">Toko Kuliner Digital / Midtrans API &amp; Web Dev</p>
+                            </div>
+                            <div class="project-action-bar">
+                                <span class="project-detail-link">Eksplorasi Detail <span class="project-action-arrow">➔</span></span>
+                                <span class="project-year-badge">2025</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Empty State saat pencarian/filter tidak ditemukan -->
+                    <div class="no-projects-found hidden" id="no-projects-msg">
+                        <div class="no-projects-icon">🔍</div>
+                        <h3 class="no-projects-title">Tidak Ada Proyek Ditemukan</h3>
+                        <p class="no-projects-desc">Tidak ada proyek yang sesuai dengan pencarian atau filter yang Anda pilih. Coba gunakan kata kunci lain.</p>
+                        <button class="btn-secondary-outline" id="reset-filter-btn" style="padding: 10px 22px; font-size: 0.85rem;">Reset Filter &amp; Pencarian</button>
+                    </div>
+
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- Glass Modal Detail Proyek -->
+    <div class="project-modal-backdrop" id="project-modal">
+        <div class="project-modal-content">
+            <button class="modal-close-btn" id="modal-close" title="Tutup Modal">✕</button>
+            <div class="modal-header-img-wrap">
+                <img src="" alt="Detail Proyek" class="modal-header-img" id="modal-img">
+            </div>
+            <div class="modal-body">
+                <span class="modal-category-tag" id="modal-cat">KATEGORI PROYEK</span>
+                <h2 class="modal-title" id="modal-title">Judul Proyek</h2>
+                <p class="modal-description" id="modal-desc">Deskripsi proyek akan ditampilkan di sini secara rinci.</p>
+                
+                <h4 class="modal-subtitle">Teknologi &amp; Stack Utama</h4>
+                <div class="modal-tech-stack" id="modal-tags">
+                    <!-- Tags generated via JS -->
+                </div>
+                
+                <div class="modal-actions">
+                    <a href="#" class="btn-primary-neon" id="modal-demo-link" target="_blank" rel="noopener noreferrer">
+                        LIHAT DEMO LANGSUNG <span class="btn-arrow">↗</span>
+                    </a>
+                    <button class="btn-secondary-outline" id="modal-close-action">TUTUP</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
-            <div class="footer-main-grid">
+            <div class="footer-grid">
                 <div class="footer-brand-col">
-                    <h2 class="footer-brand-text">Mengembangkan Rintisan untuk Pertumbuhan.</h2>
+                    <span class="footer-logo">AD. Alya Dijayanti</span>
+                    <p class="footer-slogan">Arsitektur Perangkat Lunak &amp; Produk Digital Terukur.</p>
                 </div>
 
                 <div class="footer-links-col">
-                    <h4 class="footer-links-title">Tautan Cepat</h4>
-                    <ul class="footer-links-list">
-                        <li><a href="index.html" class="footer-link">Beranda</a></li>
-                        <li><a href="index.html#layanan" class="footer-link">Layanan</a></li>
-                        <li><a href="index.html#proyek" class="footer-link">Proyek</a></li>
-                        <li><a href="index.html#prestasi" class="footer-link">Pencapaian</a></li>
-                        <li><a href="index.html#pemikiran" class="footer-link">Pemikiran</a></li>
+                    <h4 class="footer-heading">Navigasi</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#hero">Beranda</a></li>
+                        <li><a href="index.html#tentang">Tentang Saya</a></li>
+                        <li><a href="proyek.html">Eksplorasi Proyek</a></li>
+                        <li><a href="index.html#pengalaman">Pengalaman</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-links-col">
-                    <h4 class="footer-links-title">Kontak & Sosial</h4>
-                    <ul class="footer-links-list">
-                        <li><a href="mailto:alya@example.com" class="footer-link">Surel</a></li>
-                        <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
-                                class="footer-link">LinkedIn</a></li>
-                        <li><a href="https://github.com" target="_blank" rel="noopener noreferrer"
-                                class="footer-link">GitHub</a></li>
-                        <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
-                                class="footer-link">Twitter</a></li>
+                    <h4 class="footer-heading">Keahlian &amp; Github</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#stack">Core Stack</a></li>
+                        <li><a href="index.html#github">Aktivitas GitHub</a></li>
+                        <li><a href="index.html#kapabilitas">Kapabilitas Teknis</a></li>
+                        <li><a href="index.html#kontak">Mari Terhubung</a></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="footer-bottom">
+            <div class="footer-bottom-bar">
                 <p class="copyright">© 2026 Alya Dijayanti. Hak Cipta Dilindungi.</p>
-                <p class="made-with">Dibuat dengan dedikasi & kode murni.</p>
+                <p class="built-with">Dirancang dengan Presisi &amp; Kode Murni Modern.</p>
             </div>
         </div>
     </footer>
