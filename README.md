@@ -60,8 +60,8 @@ Proyek ini telah siap untuk diluncurkan (*Ready for Deployment*). Meskipun begit
 
 Tertarik untuk berkolaborasi, berdiskusi mengenai arsitektur sistem, atau sekadar berbagi pengetahuan? Silakan hubungi saya melalui:
 
-- **LinkedIn**: [Profil LinkedIn](https://linkedin.com) *(Ganti dengan tautan asli)*
-- **Surel**: alya.dijayanti@example.com *(Ganti dengan surel asli)*
+- **LinkedIn**: [Alya LinkedIn](www.linkedin.com/in/alya-dijayanti-4a0588291) 
+- **Surel**: dijayantialya4@gmail.com 
 
 ---
 *Dibuat dengan dedikasi & kode murni oleh Alya Dijayanti © 2026.*
