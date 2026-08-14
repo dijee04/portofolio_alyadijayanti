@@ -2563,6 +2563,55 @@ img {
     color: #ffffff;
 }
 
+/* Card Action Buttons (Pill Buttons: Demo Langsung & Kode Sumber) */
+.card-action-buttons {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.btn-card-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    padding: 10px 20px;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+    line-height: 1;
+}
+
+.btn-card-primary {
+    background: rgba(254, 93, 159, 0.14);
+    border: 1px solid rgba(254, 93, 159, 0.45);
+    color: #ff8dbb;
+}
+
+.btn-card-primary:hover {
+    background: rgba(254, 93, 159, 0.28);
+    border-color: #fe5d9f;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(254, 93, 159, 0.3);
+}
+
+.btn-card-secondary {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+}
+
+.btn-card-secondary:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.35);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
 /* Tech Stack Pills */
 .zigzag-tech-pills {
     display: flex;
