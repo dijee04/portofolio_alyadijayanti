@@ -21,142 +21,119 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', () => {
         if (header) {
             if (window.scrollY > 40) {
-                header.style.boxShadow = '0 12px 32px rgba(0, 0, 0, 0.08)';
+                header.style.boxShadow = '0 12px 32px rgba(0, 0, 0, 0.4)';
             } else {
-                header.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.04)';
+                header.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)';
             }
         }
     });
 
-    // --- 2. Filter & Pencarian Kata Kunci Real-Time ---
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
-    const searchInput = document.getElementById('project-search-input');
-    const searchClearBtn = document.getElementById('search-clear-btn');
-    const resultsCountText = document.getElementById('results-count-text');
-    const noProjectsMsg = document.getElementById('no-projects-msg');
-    const resetFilterBtn = document.getElementById('reset-filter-btn');
+    // --- 2. Spring Physics Engine Loop via requestAnimationFrame ---
+    const stickySections = Array.from(document.querySelectorAll('.sticky-project-section'));
 
-    let activeCategory = 'all';
-    let searchQuery = '';
+    if (stickySections.length > 0) {
+        // Data struktur state fisika pegas per seksi
+        const springState = stickySections.map((section, idx) => ({
+            element: section,
+            index: idx,
+            // Nilai Rendered Saat Ini
+            currentScale: 1,
+            currentOpacity: 1,
+            currentTranslateY: 0,
+            // Kecepatan (Velocity) Pegas
+            velScale: 0,
+            velOpacity: 0,
+            velTranslateY: 0,
+            // Nilai Target
+            targetScale: 1,
+            targetOpacity: 1,
+            targetTranslateY: 0,
+        }));
 
-    const updateGalleryView = () => {
-        let visibleCount = 0;
+        // Parameter Pegas (Stiffness + Damping untuk efek overshoot/pantulan membal & mulus)
+        const STIFFNESS = 0.09;
+        const DAMPING = 0.81;
+        const OVERLAP_DISTANCE = 380; // Jarak overlap piksel (~350–400px)
 
-        projectCards.forEach((card) => {
-            const categories = (card.getAttribute('data-categories') || '').split(' ');
-            const searchData = (card.getAttribute('data-search') || '').toLowerCase();
-            const title = (card.getAttribute('data-title') || '').toLowerCase();
-            const desc = (card.getAttribute('data-desc') || '').toLowerCase();
+        const calculateTargets = () => {
+            const viewportHeight = window.innerHeight;
 
-            const matchCategory = activeCategory === 'all' || categories.includes(activeCategory);
-            const matchSearch = !searchQuery || 
-                                searchData.includes(searchQuery) || 
-                                title.includes(searchQuery) || 
-                                desc.includes(searchQuery);
+            springState.forEach((state, i) => {
+                const rect = state.element.getBoundingClientRect();
+                const nextSection = springState[i + 1]?.element;
 
-            if (matchCategory && matchSearch) {
-                card.classList.remove('hide');
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(18px)';
+                if (nextSection) {
+                    const nextRect = nextSection.getBoundingClientRect();
+                    // Hitung jarak tumpukan seksi berikutnya terhadap batas atas seksi ini
+                    const distanceToNext = nextRect.top - rect.top;
 
-                setTimeout(() => {
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }, 40 + (visibleCount * 50));
+                    if (distanceToNext < viewportHeight) {
+                        // Progress overlap dari 0 (belum tertimpa) hingga 1 (tertimpa penuh)
+                        const overlapProgress = Math.min(1, Math.max(0, (viewportHeight - distanceToNext) / OVERLAP_DISTANCE));
 
-                visibleCount++;
-            } else {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(10px)';
-                setTimeout(() => {
-                    card.classList.add('hide');
-                }, 250);
-            }
-        });
+                        state.targetScale = 1 - (overlapProgress * 0.12); // Mengecil hingga 0.88
+                        state.targetOpacity = 1 - (overlapProgress * 0.95); // Memudar hingga 0.05
+                        state.targetTranslateY = -overlapProgress * 70; // Terangkat -70px
+                    } else {
+                        state.targetScale = 1;
+                        state.targetOpacity = 1;
+                        state.targetTranslateY = 0;
+                    }
+                } else {
+                    // Seksi terakhir tidak tertimpa
+                    state.targetScale = 1;
+                    state.targetOpacity = 1;
+                    state.targetTranslateY = 0;
+                }
+            });
+        };
 
-        // Update teks jumlah hasil pencarian
-        if (resultsCountText) {
-            resultsCountText.innerHTML = `Menampilkan <strong class="results-highlight">${visibleCount}</strong> dari <strong class="results-highlight">${projectCards.length}</strong> karya proyek`;
-        }
+        // Animasi Loop requestAnimationFrame Pegas
+        const physicsLoop = () => {
+            calculateTargets();
 
-        // Tampilkan pesan kosong jika tidak ada hasil
-        if (noProjectsMsg) {
-            if (visibleCount === 0) {
-                noProjectsMsg.classList.remove('hidden');
-                setTimeout(() => {
-                    noProjectsMsg.style.opacity = '1';
-                }, 50);
-            } else {
-                noProjectsMsg.classList.add('hidden');
-                noProjectsMsg.style.opacity = '0';
-            }
-        }
-    };
+            springState.forEach(state => {
+                // Formula Fisika Pegas: Force = (Target - Current) * Stiffness
+                const forceScale = (state.targetScale - state.currentScale) * STIFFNESS;
+                state.velScale = (state.velScale + forceScale) * DAMPING;
+                state.currentScale += state.velScale;
 
-    // Listener Tombol Filter Kategori
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            activeCategory = button.getAttribute('data-category');
+                const forceOpacity = (state.targetOpacity - state.currentOpacity) * STIFFNESS;
+                state.velOpacity = (state.velOpacity + forceOpacity) * DAMPING;
+                state.currentOpacity += state.velOpacity;
 
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
+                const forceY = (state.targetTranslateY - state.currentTranslateY) * STIFFNESS;
+                state.velTranslateY = (state.velTranslateY + forceY) * DAMPING;
+                state.currentTranslateY += state.velTranslateY;
 
-            updateGalleryView();
-        });
-    });
+                // Terapkan nilai ke gaya CSS elemen
+                state.element.style.transform = `scale(${state.currentScale.toFixed(4)}) translateY(${state.currentTranslateY.toFixed(2)}px)`;
+                state.element.style.opacity = Math.max(0, state.currentOpacity).toFixed(4);
 
-    // Listener Input Pencarian
-    if (searchInput) {
-        searchInput.addEventListener('input', (e) => {
-            searchQuery = e.target.value.trim().toLowerCase();
-            updateGalleryView();
-        });
-    }
-
-    // Listener Tombol Clear Search
-    if (searchClearBtn && searchInput) {
-        searchClearBtn.addEventListener('click', () => {
-            searchInput.value = '';
-            searchQuery = '';
-            searchInput.focus();
-            updateGalleryView();
-        });
-    }
-
-    // Listener Tombol Reset Filter & Search
-    if (resetFilterBtn) {
-        resetFilterBtn.addEventListener('click', () => {
-            activeCategory = 'all';
-            searchQuery = '';
-            if (searchInput) searchInput.value = '';
-
-            filterButtons.forEach(btn => {
-                btn.classList.toggle('active', btn.getAttribute('data-category') === 'all');
+                // Matikan pointer-events saat seksi hampir tak terlihat agar tombol seksi di atasnya dapat diklik
+                if (state.currentOpacity < 0.15) {
+                    state.element.style.pointerEvents = 'none';
+                } else {
+                    state.element.style.pointerEvents = 'auto';
+                }
             });
 
-            updateGalleryView();
-        });
+            requestAnimationFrame(physicsLoop);
+        };
+
+        // Jalankan loop fisika pegas
+        requestAnimationFrame(physicsLoop);
     }
 
-    // --- 3. Efek Interaktif Kursor Mouse 3D Tilt & Glass Reflection ---
-    projectCards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-
-            const rotateX = ((y - centerY) / centerY) * -4; // Maksimal 4 deg tilt
-            const rotateY = ((x - centerX) / centerX) * 4;
-
-            card.style.transform = `perspective(1000px) translateY(-8px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-        });
-
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'perspective(1000px) translateY(0) rotateX(0deg) rotateY(0deg)';
+    // --- 3. Segmented Pill Nav Interaktif ---
+    const pillNavItems = document.querySelectorAll('.pill-nav-item');
+    pillNavItems.forEach(pill => {
+        pill.addEventListener('click', (e) => {
+            const parentNav = pill.closest('.segmented-pill-nav');
+            if (parentNav) {
+                parentNav.querySelectorAll('.pill-nav-item').forEach(item => item.classList.remove('active'));
+                pill.classList.add('active');
+            }
         });
     });
 
@@ -167,17 +144,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalTitle = document.getElementById('modal-title');
     const modalDesc = document.getElementById('modal-desc');
     const modalTags = document.getElementById('modal-tags');
-    const modalDemoLink = document.getElementById('modal-demo-link');
     const modalClose = document.getElementById('modal-close');
     const modalCloseAction = document.getElementById('modal-close-action');
+    const modalOpenBtns = document.querySelectorAll('.open-project-modal-btn');
 
-    const openModal = (card) => {
-        const title = card.getAttribute('data-title') || 'Detail Proyek';
-        const cat = card.getAttribute('data-cat') || 'PORTFOLIO';
-        const desc = card.getAttribute('data-desc') || 'Deskripsi proyek belum tersedia.';
-        const img = card.getAttribute('data-img') || '';
-        const tags = (card.getAttribute('data-tags') || '').split(',');
-        const link = card.getAttribute('data-link') || 'index.html#kontak';
+    const openModal = (btn) => {
+        const title = btn.getAttribute('data-title') || 'Detail Proyek';
+        const cat = btn.getAttribute('data-cat') || 'PORTFOLIO';
+        const desc = btn.getAttribute('data-desc') || 'Deskripsi proyek belum tersedia.';
+        const img = btn.getAttribute('data-img') || '';
+        const tags = (btn.getAttribute('data-tags') || '').split(',');
 
         if (modalTitle) modalTitle.textContent = title;
         if (modalCat) modalCat.textContent = cat.toUpperCase();
@@ -186,9 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
             modalImg.src = img;
             modalImg.alt = title;
         }
-        if (modalDemoLink) modalDemoLink.href = link;
 
-        // Render tag teknologi di modal
         if (modalTags) {
             modalTags.innerHTML = '';
             tags.forEach(tag => {
@@ -200,28 +174,25 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        modalBackdrop.classList.add('is-active');
-        document.body.style.overflow = 'hidden'; // Kunci scroll latar belakang
+        if (modalBackdrop) modalBackdrop.classList.add('is-active');
+        document.body.style.overflow = 'hidden';
     };
 
     const closeModal = () => {
         if (modalBackdrop) modalBackdrop.classList.remove('is-active');
-        document.body.style.overflow = ''; // Buka kunci scroll
+        document.body.style.overflow = '';
     };
 
-    // Pasang listener pada setiap kartu proyek
-    projectCards.forEach(card => {
-        card.addEventListener('click', (e) => {
-            // Hindari pemicu jika mengeklik tombol di dalam kartu
-            openModal(card);
+    modalOpenBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal(btn);
         });
     });
 
-    // Listener tombol tutup modal
     if (modalClose) modalClose.addEventListener('click', closeModal);
     if (modalCloseAction) modalCloseAction.addEventListener('click', closeModal);
 
-    // Tutup saat mengklik area luar modal (backdrop)
     if (modalBackdrop) {
         modalBackdrop.addEventListener('click', (e) => {
             if (e.target === modalBackdrop) {
@@ -230,23 +201,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Tutup saat menekan tombol ESC
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && modalBackdrop && modalBackdrop.classList.contains('is-active')) {
             closeModal();
         }
     });
-
-    // Animasi masuk awal kartu
-    projectCards.forEach((card, idx) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(25px)';
-        card.style.transition = 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
-        
-        setTimeout(() => {
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-        }, 80 + (idx * 70));
-    });
 });
-
