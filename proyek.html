@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Karya &amp; Proyek — Alya Dijayanti</title>
     <meta name="description"
-        content="Galeri karya dan proyek sistem perangkat lunak oleh Alya Dijayanti dengan tampilan Stacked Sticky Full-Page Sections ala GitHub Hero.">
+        content="Galeri portofolio arsitektur sistem dan aplikasi oleh Alya Dijayanti dengan tampilan zig-zag interaktif.">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,7 +16,7 @@
         rel="stylesheet">
 
     <link rel="icon" type="image/png" href="assets/pixel_heart.png">
-    <link rel="stylesheet" href="style.css?v=3.0">
+    <link rel="stylesheet" href="style.css?v=5.0">
 </head>
 
 <body class="stacked-sticky-page">
@@ -28,7 +28,7 @@
         <div class="radiance-orb orb-pink"></div>
     </div>
 
-    <!-- 1. Header / Navigasi Melayang (Floating Pill Nav) -->
+    <!-- 1. Header / Navigasi Melayang (Sticky Top Navbar) -->
     <header class="top-nav">
         <div class="nav-container">
             <a href="index.html" class="nav-brand">
@@ -66,747 +66,324 @@
         </div>
     </div>
 
-    <!-- Main Stacked Sections Container -->
-    <main class="sticky-sections-wrapper">
+    <!-- Page Hero Banner Header & Category Filter Pills (Rata Tengah) -->
+    <div class="proyek-page-hero" style="padding: 125px 24px 30px 24px; max-width: 1140px; margin: 0 auto; position: relative; z-index: 5; text-align: center;">
+        <div style="display: flex; justify-content: center; width: 100%;">
+            <span class="sticky-project-badge" style="margin-top: 10px; margin-bottom: 16px;">✦ ARSITEKTUR &amp; REKAM JEJAK</span>
+        </div>
+        <h1 class="gradient-headline" style="font-size: clamp(2.6rem, 5.5vw, 4.2rem); margin-bottom: 14px; text-align: center;">Eksplorasi Arsitektur Sistem</h1>
+        <p class="sticky-project-sub" style="max-width: 640px; margin: 0 auto 32px auto; text-align: center; color: #94a3b8;">
+            Kumpulan arsitektur sistem, platform terkonfigurasi, dan implementasi struktural. Tinjau wireframe &amp; detail logika utama proyek di bawah ini sebelum aplikasi estetis.
+        </p>
 
-        <!-- SECTION 1: PAYROLL ENTERPRISE SYSTEM -->
-        <section class="sticky-project-section" id="project-1" data-project-index="0">
-            <div class="sticky-section-inner">
-                
-                <!-- 1. Judul besar bergradasi (putih ke ungu muda) + subjudul terpusat -->
-                <div class="sticky-header-center">
-                    <span class="sticky-project-badge">✦ PROYEK 01 // FULLSTACK &amp; FINANCE</span>
-                    <h1 class="gradient-headline">Payroll Enterprise System</h1>
-                    <p class="sticky-project-sub">
-                        Sistem manajemen penggajian karyawan skala perusahaan dengan pemrosesan terenkripsi, kontrol akses bertingkat (RBAC), dan pembuatan slip gaji otomatis.
-                    </p>
+        <!-- Category Filter Pills Interaktif (Rata Tengah) -->
+        <div class="segmented-pill-nav project-filter-nav" style="justify-content: center; gap: 8px; margin-bottom: 24px; flex-wrap: wrap;">
+            <button class="pill-nav-item filter-btn active" data-filter="all">Semua <span class="filter-count">(4)</span></button>
+            <button class="pill-nav-item filter-btn" data-filter="uiux">UI/UX <span class="filter-count">(1)</span></button>
+            <button class="pill-nav-item filter-btn" data-filter="website">Website <span class="filter-count">(2)</span></button>
+            <button class="pill-nav-item filter-btn" data-filter="mobile">Mobile App <span class="filter-count">(1)</span></button>
+            <button class="pill-nav-item filter-btn" data-filter="audit">Audit <span class="filter-count">(1)</span></button>
+            <button class="pill-nav-item filter-btn" data-filter="ai">Machine Learning &amp; AI <span class="filter-count">(0)</span></button>
+            <button class="pill-nav-item filter-btn" data-filter="business">Business Process &amp; Documentation <span class="filter-count">(1)</span></button>
+        </div>
+        
+        <hr style="border: none; border-bottom: 1px solid rgba(255, 255, 255, 0.1); margin-top: 20px; margin-bottom: 40px;">
+    </div>
+
+    <!-- Main Alternating Zig-Zag Projects Showcase Wrapper -->
+    <main class="proyek-zigzag-container">
+
+        <!-- PROYEK 01: PAYROLL ENTERPRISE SYSTEM (WEBSITE, AUDIT, BUSINESS PROCESS) -->
+        <article class="zigzag-project-card" id="project-1" data-category="website audit business">
+            
+            <!-- Kolom Media Box (Kiri) -->
+            <div class="zigzag-media-col">
+                <div class="zigzag-media-box">
+                    <img src="assets/project_payroll.png" alt="Payroll Enterprise System Preview" class="zigzag-media-img">
                 </div>
-
-                <!-- 2. Baris CTA: field repo + tombol primary (solid teal) + tombol secondary (glass outline) -->
-                <div class="sticky-cta-row">
-                    <div class="repo-link-box">
-                        <span class="repo-icon">🔗</span>
-                        <span class="repo-text">github.com/alyadije/payroll-enterprise</span>
-                    </div>
-                    <a href="index.html#kontak" class="btn-solid-teal">
-                        Demo Payroll <span class="btn-arrow">↗</span>
-                    </a>
-                    <button class="btn-glass-secondary open-project-modal-btn" 
-                            data-title="Payroll Enterprise System"
-                            data-cat="Fullstack & UX"
-                            data-desc="Sistem penggajian terpusat untuk perusahaan dengan kontrol RBAC, kalkulasi insentif otomatis, serta slip gaji terenkripsi."
-                            data-img="assets/project_payroll.png"
-                            data-tags="Fullstack,Finance,RBAC,Node.js,PostgreSQL">
-                        Detail Arsitektur
-                    </button>
-                </div>
-
-                <!-- 3. Window mockup mengambang di bawahnya (Editor kode dark ala GitHub Hero) -->
-                <div class="editor-window-mockup">
-                    <div class="editor-topbar">
-                        <div class="traffic-dots">
-                            <span class="dot dot-red"></span>
-                            <span class="dot dot-yellow"></span>
-                            <span class="dot dot-green"></span>
-                        </div>
-                        <div class="editor-tabs">
-                            <div class="editor-tab active">
-                                <span class="tab-icon">📄</span> payroll.service.ts <span class="tab-close">×</span>
-                            </div>
-                            <div class="editor-tab">
-                                <span class="tab-icon">📊</span> schema.sql <span class="tab-close">×</span>
-                            </div>
-                            <div class="editor-tab">
-                                <span class="tab-icon">🔒</span> rbac.guard.ts <span class="tab-close">×</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="editor-workspace">
-                        <div class="editor-rail">
-                            <div class="rail-icon active" title="Explorer">📁</div>
-                            <div class="rail-icon" title="Search">🔍</div>
-                            <div class="rail-icon" title="Source Control">🌿</div>
-                            <div class="rail-icon" title="Extensions">🧩</div>
-                        </div>
-
-                        <div class="editor-chat-panel">
-                            <div class="chat-header">
-                                <span class="chat-title">PAYROLL COPILOT // CHAT</span>
-                            </div>
-                            <div class="chat-content">
-                                <div class="chat-msg system">
-                                    <span class="msg-author">Engine:</span>
-                                    <span>Memproses kalkulasi PPh21 &amp; slip gaji 1,250 karyawan...</span>
-                                </div>
-                                <div class="chat-msg user">
-                                    <span class="msg-author">Alya:</span>
-                                    <span>Jalankan validasi enkripsi slip gaji AES-256.</span>
-                                </div>
-                                <div class="chat-msg system success">
-                                    <span class="msg-author">Status:</span>
-                                    <span>✓ Verifikasi sukses. Slip gaji siap didistribusikan.</span>
-                                </div>
-                            </div>
-                            <div class="chat-input-wrap">
-                                <input type="text" class="chat-input" value="Proses kalkulasi slip gaji otomatis..." readonly>
-                                <button class="chat-send-btn">➢</button>
-                            </div>
-                        </div>
-
-                        <div class="editor-code-panel">
-                            <div class="code-line-numbers">
-                                <span>66</span><span>67</span><span>68</span><span>69</span><span>70</span><span>71</span><span>72</span><span>73</span><span>74</span><span>75</span><span>76</span><span>77</span><span>78</span>
-                            </div>
-                            <pre class="code-content"><code><span class="code-keyword">export class</span> <span class="code-class">PayrollEngine</span> {
-  <span class="code-keyword">public async</span> <span class="code-func">calculateMonthlySalary</span>(employeeId: <span class="code-type">string</span>) {
-    <span class="code-keyword">const</span> employee = <span class="code-keyword">await</span> <span class="code-var">db</span>.employees.<span class="code-func">findById</span>(employeeId);
-    
-    <span class="code-comment">// Hitung pemotongan pajak PPh21 dan insentif</span>
-    <span class="code-keyword">const</span> taxDeduction = <span class="code-func">calculateTax</span>(employee.baseSalary);
-    <span class="code-keyword">const</span> netPay = employee.baseSalary - taxDeduction + employee.bonus;
-
-    <span class="code-keyword">return await</span> <span class="code-var">this</span>.<span class="code-func">generateEncryptedPayslip</span>({
-      employeeId,
-      netPay,
-      issuedAt: <span class="code-string">Date.now()</span>
-    });
-  }
-}</code></pre>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 4. Pill nav (segmented, rounded-full) berisi tech stack, satu pill aktif solid -->
-                <div class="segmented-pill-nav">
-                    <button class="pill-nav-item active">Code</button>
-                    <button class="pill-nav-item">Node.js</button>
-                    <button class="pill-nav-item">PostgreSQL</button>
-                    <button class="pill-nav-item">RBAC System</button>
-                    <button class="pill-nav-item">AES-256</button>
-                </div>
-
-                <!-- 5. Satu kalimat caption penjelasan di paling bawah, terpusat, warna muted -->
-                <p class="sticky-caption-muted">
-                    Ekosistem penggajian terpusat yang memangkas waktu kalkulasi bulanan hingga 90% dengan keandalan tinggi.
-                </p>
-
             </div>
-        </section>
 
-        <!-- SECTION 2: DOMUS MINIMALIS PROPERTY -->
-        <section class="sticky-project-section" id="project-2" data-project-index="1">
-            <div class="sticky-section-inner">
-                
-                <div class="sticky-header-center">
-                    <span class="sticky-project-badge">✦ PROYEK 02 // UI/UX &amp; FRONTEND</span>
-                    <h1 class="gradient-headline">Domus Minimalis Property</h1>
-                    <p class="sticky-project-sub">
-                        Platform eksplorasi properti hunian minimalis dengan antarmuka adaptif, filter real-time intuitif, dan visualisasi layout 3D yang jernih.
-                    </p>
+            <!-- Kolom Informasi Konten (Kanan) -->
+            <div class="zigzag-info-col">
+                <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px;">
+                    <span class="sticky-project-badge" style="font-size: 0.72rem; padding: 3px 10px; margin-bottom: 0;">Website</span>
+                    <span class="sticky-project-badge" style="font-size: 0.72rem; padding: 3px 10px; margin-bottom: 0; background: rgba(9, 152, 161, 0.15); color: #38bdf8; border-color: rgba(9, 152, 161, 0.3);">Audit</span>
+                    <span class="sticky-project-badge" style="font-size: 0.72rem; padding: 3px 10px; margin-bottom: 0; background: rgba(254, 93, 159, 0.15); color: #fe5d9f; border-color: rgba(254, 93, 159, 0.3);">Business Process</span>
+                </div>
+                <h2 class="zigzag-title">Payroll Enterprise System</h2>
+                <p class="zigzag-subtitle">Sistem pemrosesan gaji terpusat skala perusahaan dengan pengamanan terenkripsi.</p>
+
+                <!-- Callout Blocks dengan Garis Aksis Kiri -->
+                <div class="zigzag-callouts">
+                    <div class="zigzag-callout-item">
+                        <span class="zigzag-callout-label">PERMASALAHAN &amp; LOGIKA</span>
+                        <p class="zigzag-callout-text">
+                            Tantangan utama adalah menjamin presisi kalkulasi pajak PPh21 dan insentif 1,250+ karyawan secara cepat tanpa hambatan performa dengan enkripsi AES-256.
+                        </p>
+                    </div>
+
+                    <div class="zigzag-callout-item">
+                        <span class="zigzag-callout-label">KONTROL AKSES &amp; KEAMANAN</span>
+                        <p class="zigzag-callout-text">
+                            Penerapan RBAC (Role-Based Access Control) bertingkat untuk proteksi kerahasiaan data finansial perusahaan dan pembuatan slip gaji terverifikasi otomatis.
+                        </p>
+                    </div>
                 </div>
 
-                <div class="sticky-cta-row">
-                    <div class="repo-link-box">
-                        <span class="repo-icon">🔗</span>
-                        <span class="repo-text">github.com/alyadije/domus-property-app</span>
+                <!-- Stat Metrics Row -->
+                <div class="zigzag-stats-row">
+                    <div class="stat-box-bordered">
+                        <span class="stat-box-label">KAPASITAS</span>
+                        <span class="stat-box-val">1,250+ Karyawan</span>
                     </div>
-                    <a href="index.html#kontak" class="btn-solid-teal">
-                        Jelajahi Domus <span class="btn-arrow">↗</span>
+                    <div class="stat-box-bordered">
+                        <span class="stat-box-label">ENKRIPSI</span>
+                        <span class="stat-box-val">AES-256 Bit</span>
+                    </div>
+                </div>
+
+                <!-- Tech Stack Pills -->
+                <div class="zigzag-tech-pills">
+                    <span class="tech-pill-box">Node.js</span>
+                    <span class="tech-pill-box">TypeScript</span>
+                    <span class="tech-pill-box">PostgreSQL</span>
+                    <span class="tech-pill-box">RBAC Auth</span>
+                </div>
+
+                <!-- Action Links -->
+                <div class="zigzag-actions">
+                    <a href="index.html#kontak" class="zigzag-action-link">
+                        Lihat Detail Arsitektur <span class="arrow">➔</span>
                     </a>
-                    <button class="btn-glass-secondary open-project-modal-btn"
-                            data-title="Domus Minimalis Property"
-                            data-cat="UI/UX & Frontend"
-                            data-desc="Platform pencarian properti modern dengan visualisasi layout 3D interaktif dan sistem desain responsif."
-                            data-img="assets/project_domus.png"
-                            data-tags="UI/UX,React,Design System,Figma">
-                        Lihat Wireframe
-                    </button>
                 </div>
-
-                <div class="editor-window-mockup">
-                    <div class="editor-topbar">
-                        <div class="traffic-dots">
-                            <span class="dot dot-red"></span>
-                            <span class="dot dot-yellow"></span>
-                            <span class="dot dot-green"></span>
-                        </div>
-                        <div class="editor-tabs">
-                            <div class="editor-tab active">
-                                <span class="tab-icon">⚛️</span> PropertyViewer.jsx <span class="tab-close">×</span>
-                            </div>
-                            <div class="editor-tab">
-                                <span class="tab-icon">🎨</span> characters.module.css <span class="tab-close">×</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="editor-workspace">
-                        <div class="editor-rail">
-                            <div class="rail-icon active">📁</div>
-                            <div class="rail-icon">🔍</div>
-                            <div class="rail-icon">🎨</div>
-                        </div>
-
-                        <div class="editor-chat-panel">
-                            <div class="chat-header">
-                                <span class="chat-title">DESIGN COPILOT // UI TEST</span>
-                            </div>
-                            <div class="chat-content">
-                                <div class="chat-msg system">
-                                    <span class="msg-author">Design System:</span>
-                                    <span>Memuat komponen 3D house layout viewport...</span>
-                                </div>
-                                <div class="chat-msg user">
-                                    <span class="msg-author">Alya:</span>
-                                    <span>Uji filter real-time harga &amp; tipe rumah minimalis.</span>
-                                </div>
-                                <div class="chat-msg system success">
-                                    <span class="msg-author">Status:</span>
-                                    <span>✓ Render 60 FPS lancar pada antarmuka seluler.</span>
-                                </div>
-                            </div>
-                            <div class="chat-input-wrap">
-                                <input type="text" class="chat-input" value="Render filter properti 3D real-time..." readonly>
-                                <button class="chat-send-btn">➢</button>
-                            </div>
-                        </div>
-
-                        <div class="editor-code-panel">
-                            <div class="code-line-numbers">
-                                <span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><span>22</span>
-                            </div>
-                            <pre class="code-content"><code><span class="code-keyword">export function</span> <span class="code-func">PropertyCard</span>({ item, onSelect }) {
-  <span class="code-keyword">return</span> (
-    &lt;<span class="code-class">div</span> className=<span class="code-string">"property-glass-card"</span> onClick={onSelect}&gt;
-      &lt;<span class="code-class">Image3D</span> src={item.modelUrl} alt={item.title} /&gt;
-      &lt;<span class="code-class">div</span> className=<span class="code-string">"details"</span>&gt;
-        &lt;<span class="code-class">h4</span>&gt;{item.title}&lt;/<span class="code-class">h4</span>&gt;
-        &lt;<span class="code-class">span</span> className=<span class="code-string">"price"</span>&gt;{item.priceFormatted}&lt;/<span class="code-class">span</span>&gt;
-      &lt;/<span class="code-class">div</span>&gt;
-    &lt;/<span class="code-class">div</span>&gt;
-  );
-}</code></pre>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="segmented-pill-nav">
-                    <button class="pill-nav-item active">React</button>
-                    <button class="pill-nav-item">UI/UX Design</button>
-                    <button class="pill-nav-item">Figma System</button>
-                    <button class="pill-nav-item">3D Layout</button>
-                </div>
-
-                <p class="sticky-caption-muted">
-                    Menghadirkan pengalaman eksplorasi hunian masa kini yang interaktif, jernih, dan sangat intuitif.
-                </p>
-
             </div>
-        </section>
 
-        <!-- SECTION 3: NAJM ASTRONOMICAL TELEMETRY -->
-        <section class="sticky-project-section" id="project-3" data-project-index="2">
-            <div class="sticky-section-inner">
-                
-                <div class="sticky-header-center">
-                    <span class="sticky-project-badge">✦ PROYEK 03 // FULLSTACK &amp; API</span>
-                    <h1 class="gradient-headline">Najm Astronomical Telemetry</h1>
-                    <p class="sticky-project-sub">
-                        Dashboard pemantauan telemetri astronomi real-time yang mengintegrasikan REST API observatorium untuk visualisasi sinyal antariksa dan data cuaca kosmik.
-                    </p>
+        </article>
+
+
+        <!-- PROYEK 02: DEARSEANA STORE (WEBSITE) -->
+        <article class="zigzag-project-card reverse-layout" id="project-2" data-category="website">
+            
+            <!-- Kolom Informasi Konten (Kiri) -->
+            <div class="zigzag-info-col">
+                <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px;">
+                    <span class="sticky-project-badge" style="font-size: 0.72rem; padding: 3px 10px; margin-bottom: 0;">Website</span>
+                </div>
+                <h2 class="zigzag-title">DearSeana Bakery Store</h2>
+                <p class="zigzag-subtitle">Website toko kue eksklusif dengan integrasi API MidTrans &amp; alur pembayaran digital.</p>
+
+                <!-- Callout Blocks dengan Garis Aksis Kiri -->
+                <div class="zigzag-callouts">
+                    <div class="zigzag-callout-item">
+                        <span class="zigzag-callout-label">STRATEGI ARSITEKTUR</span>
+                        <p class="zigzag-callout-text">
+                            Membangun ekosistem e-commerce dengan checkout otomatis &amp; validasi notifikasi webhook MidTrans Snap API secara aman dan transparan.
+                        </p>
+                    </div>
+
+                    <div class="zigzag-callout-item">
+                        <span class="zigzag-callout-label">DESAIN MODULAR</span>
+                        <p class="zigzag-callout-text">
+                            Pengelolaan katalog produk interaktif, keranjang belanja dinamis, dan dashboard manajemen pesanan yang responsif bagi pengelola toko.
+                        </p>
+                    </div>
                 </div>
 
-                <div class="sticky-cta-row">
-                    <div class="repo-link-box">
-                        <span class="repo-icon">🔗</span>
-                        <span class="repo-text">github.com/alyadije/najm-telemetry-dashboard</span>
+                <!-- Stat Metrics Row -->
+                <div class="zigzag-stats-row">
+                    <div class="stat-box-bordered">
+                        <span class="stat-box-label">GATEWAY</span>
+                        <span class="stat-box-val">MidTrans Snap</span>
                     </div>
-                    <a href="index.html#kontak" class="btn-solid-teal">
-                        Pantau Sinyal <span class="btn-arrow">↗</span>
+                    <div class="stat-box-bordered">
+                        <span class="stat-box-label">VERIFIKASI</span>
+                        <span class="stat-box-val">SHA-512 Secure</span>
+                    </div>
+                </div>
+
+                <!-- Tech Stack Pills -->
+                <div class="zigzag-tech-pills">
+                    <span class="tech-pill-box">PHP Laravel</span>
+                    <span class="tech-pill-box">MidTrans API</span>
+                    <span class="tech-pill-box">MySQL</span>
+                    <span class="tech-pill-box">TailwindCSS</span>
+                </div>
+
+                <!-- Action Links -->
+                <div class="zigzag-actions">
+                    <a href="index.html#kontak" class="zigzag-action-link">
+                        Lihat Studi Kasus <span class="arrow">➔</span>
                     </a>
-                    <button class="btn-glass-secondary open-project-modal-btn"
-                            data-title="Najm Astronomical Telemetry"
-                            data-cat="Fullstack & API"
-                            data-desc="Dashboard telemetri kosmik real-time berbasis Python REST API dan Chart.js untuk analisis sinyal observatorium."
-                            data-img="assets/project_najm.png"
-                            data-tags="Fullstack,Python,Telemetry,API,Chart.js">
-                        Spesifikasi REST API
-                    </button>
                 </div>
-
-                <div class="editor-window-mockup">
-                    <div class="editor-topbar">
-                        <div class="traffic-dots">
-                            <span class="dot dot-red"></span>
-                            <span class="dot dot-yellow"></span>
-                            <span class="dot dot-green"></span>
-                        </div>
-                        <div class="editor-tabs">
-                            <div class="editor-tab active">
-                                <span class="tab-icon">🐍</span> telemetry_stream.py <span class="tab-close">×</span>
-                            </div>
-                            <div class="editor-tab">
-                                <span class="tab-icon">📈</span> chart_render.js <span class="tab-close">×</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="editor-workspace">
-                        <div class="editor-rail">
-                            <div class="rail-icon active">📁</div>
-                            <div class="rail-icon">📡</div>
-                            <div class="rail-icon">⚙️</div>
-                        </div>
-
-                        <div class="editor-chat-panel">
-                            <div class="chat-header">
-                                <span class="chat-title">OBSERVATORY STREAM // LOG</span>
-                            </div>
-                            <div class="chat-content">
-                                <div class="chat-msg system">
-                                    <span class="msg-author">Stream:</span>
-                                    <span>Menghubungkan ke API teleskopik observatorium...</span>
-                                </div>
-                                <div class="chat-msg user">
-                                    <span class="msg-author">Alya:</span>
-                                    <span>Buka soket sinyal frekuensi 1420 MHz.</span>
-                                </div>
-                                <div class="chat-msg system success">
-                                    <span class="msg-author">Status:</span>
-                                    <span>✓ Stream telemetri aktif. 1,000 data point per detik.</span>
-                                </div>
-                            </div>
-                            <div class="chat-input-wrap">
-                                <input type="text" class="chat-input" value="Buka stream data cuaca kosmik..." readonly>
-                                <button class="chat-send-btn">➢</button>
-                            </div>
-                        </div>
-
-                        <div class="editor-code-panel">
-                            <div class="code-line-numbers">
-                                <span>45</span><span>46</span><span>47</span><span>48</span><span>49</span><span>50</span><span>51</span><span>52</span><span>53</span><span>54</span>
-                            </div>
-                            <pre class="code-content"><code><span class="code-keyword">import</span> asyncio
-<span class="code-keyword">from</span> telemetry <span class="code-keyword">import</span> ObservatoriumAPI
-
-<span class="code-keyword">async def</span> <span class="code-func">stream_cosmic_signals</span>():
-    api = ObservatoriumAPI(api_key=<span class="code-string">"ENV_NAJM_KEY"</span>)
-    <span class="code-keyword">async for</span> packet <span class="code-keyword">in</span> api.<span class="code-func">subscribe</span>(<span class="code-string">"cosmic-weather"</span>):
-        <span class="code-func">process_signal_graph</span>(packet.data)
-        <span class="code-keyword">await</span> asyncio.<span class="code-func">sleep</span>(0.01)</code></pre>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="segmented-pill-nav">
-                    <button class="pill-nav-item active">Python</button>
-                    <button class="pill-nav-item">REST API</button>
-                    <button class="pill-nav-item">Telemetry Stream</button>
-                    <button class="pill-nav-item">Chart.js</button>
-                </div>
-
-                <p class="sticky-caption-muted">
-                    Memantau sinyal astronomi dan gelombang kosmik dengan visualisasi grafik performa tinggi.
-                </p>
-
             </div>
-        </section>
 
-        <!-- SECTION 4: KIVI FINANCIAL SAAS -->
-        <section class="sticky-project-section" id="project-4" data-project-index="3">
-            <div class="sticky-section-inner">
-                
-                <div class="sticky-header-center">
-                    <span class="sticky-project-badge">✦ PROYEK 04 // SAAS &amp; API INTEGRATION</span>
-                    <h1 class="gradient-headline">Kivi Financial SaaS</h1>
-                    <p class="sticky-project-sub">
-                        Aplikasi SaaS manajemen keuangan pribadi dengan integrasi API perbankan terenkripsi, pencatatan otomatis pengeluaran, dan grafik proyeksi arus kas.
-                    </p>
+            <!-- Kolom Media Box (Kanan) -->
+            <div class="zigzag-media-col">
+                <div class="zigzag-media-box">
+                    <img src="assets/project_najm.png" alt="DearSeana Bakery Store Preview" class="zigzag-media-img">
+                </div>
+            </div>
+
+        </article>
+
+
+        <!-- PROYEK 03: VOCA LANGUAGE APP (UI/UX) -->
+        <article class="zigzag-project-card" id="project-3" data-category="uiux">
+            
+            <!-- Kolom Media Box (Kiri) -->
+            <div class="zigzag-media-col">
+                <div class="zigzag-media-box">
+                    <img src="assets/project_domus.png" alt="VOCA Language Learning App Preview" class="zigzag-media-img">
+                </div>
+            </div>
+
+            <!-- Kolom Informasi Konten (Kanan) -->
+            <div class="zigzag-info-col">
+                <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px;">
+                    <span class="sticky-project-badge" style="font-size: 0.72rem; padding: 3px 10px; margin-bottom: 0;">UI/UX</span>
+                </div>
+                <h2 class="zigzag-title">VOCA - Language Learning App</h2>
+                <p class="zigzag-subtitle">Juara 2 Kompetisi UI/UX "The Future of Education" Tingkat Nasional.</p>
+
+                <!-- Callout Blocks dengan Garis Aksis Kiri -->
+                <div class="zigzag-callouts">
+                    <div class="zigzag-callout-item">
+                        <span class="zigzag-callout-label">DESAIN INTERAKSI &amp; GAMIFIKASI</span>
+                        <p class="zigzag-callout-text">
+                            Riset mendalam alur pengguna (user flow), wireframing, dan prototype interaktif adaptif berbasis pembelajaran gamifikasi untuk mendisrupsi edukasi konvensional.
+                        </p>
+                    </div>
+
+                    <div class="zigzag-callout-item">
+                        <span class="zigzag-callout-label">SKOR KEPUASAN PENGGUNA</span>
+                        <p class="zigzag-callout-text">
+                            Pengujian usabilitas dengan tingkat kepuasan pengguna 94.2% pada konsistensi sistem desain dan komponen micro-interaction yang intuitif.
+                        </p>
+                    </div>
                 </div>
 
-                <div class="sticky-cta-row">
-                    <div class="repo-link-box">
-                        <span class="repo-icon">🔗</span>
-                        <span class="repo-text">github.com/alyadije/kivi-financial-saas</span>
+                <!-- Stat Metrics Row -->
+                <div class="zigzag-stats-row">
+                    <div class="stat-box-bordered">
+                        <span class="stat-box-label">PRESTASI</span>
+                        <span class="stat-box-val">Juara 2 Nasional</span>
                     </div>
-                    <a href="index.html#kontak" class="btn-solid-teal">
-                        Buka Dashboard <span class="btn-arrow">↗</span>
+                    <div class="stat-box-bordered">
+                        <span class="stat-box-label">USABILITY SCORE</span>
+                        <span class="stat-box-val">94.2%</span>
+                    </div>
+                </div>
+
+                <!-- Tech Stack Pills -->
+                <div class="zigzag-tech-pills">
+                    <span class="tech-pill-box">UI/UX Design</span>
+                    <span class="tech-pill-box">Figma</span>
+                    <span class="tech-pill-box">Design System</span>
+                    <span class="tech-pill-box">Prototyping</span>
+                </div>
+
+                <!-- Action Links -->
+                <div class="zigzag-actions">
+                    <a href="index.html#kontak" class="zigzag-action-link">
+                        Lihat Diagram Desain <span class="arrow">➔</span>
                     </a>
-                    <button class="btn-glass-secondary open-project-modal-btn"
-                            data-title="Kivi Financial SaaS"
-                            data-cat="SaaS & API"
-                            data-desc="Platform SaaS manajemen keuangan pribadi dengan integrasi API perbankan terenkripsi dan analisis arus kas."
-                            data-img="assets/project_kivi.png"
-                            data-tags="SaaS,API Integration,React,Express,PostgreSQL">
-                        Protokol Enkripsi
-                    </button>
                 </div>
-
-                <div class="editor-window-mockup">
-                    <div class="editor-topbar">
-                        <div class="traffic-dots">
-                            <span class="dot dot-red"></span>
-                            <span class="dot dot-yellow"></span>
-                            <span class="dot dot-green"></span>
-                        </div>
-                        <div class="editor-tabs">
-                            <div class="editor-tab active">
-                                <span class="tab-icon">💳</span> BankIntegration.ts <span class="tab-close">×</span>
-                            </div>
-                            <div class="editor-tab">
-                                <span class="tab-icon">📊</span> Cashflow.jsx <span class="tab-close">×</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="editor-workspace">
-                        <div class="editor-rail">
-                            <div class="rail-icon active">📁</div>
-                            <div class="rail-icon">🔑</div>
-                            <div class="rail-icon">⚙️</div>
-                        </div>
-
-                        <div class="editor-chat-panel">
-                            <div class="chat-header">
-                                <span class="chat-title">FINANCIAL BOT // SYNC</span>
-                            </div>
-                            <div class="chat-content">
-                                <div class="chat-msg system">
-                                    <span class="msg-author">Bank Sync:</span>
-                                    <span>Menghubungkan ke gateway perbankan terenkripsi...</span>
-                                </div>
-                                <div class="chat-msg user">
-                                    <span class="msg-author">Alya:</span>
-                                    <span>Jalankan sinkronisasi mutasi dan analisis kategori otomatis.</span>
-                                </div>
-                                <div class="chat-msg system success">
-                                    <span class="msg-author">Status:</span>
-                                    <span>✓ 42 transaksi berhasil disinkronkan &amp; dikategorikan.</span>
-                                </div>
-                            </div>
-                            <div class="chat-input-wrap">
-                                <input type="text" class="chat-input" value="Sinkronisasi transaksi perbankan..." readonly>
-                                <button class="chat-send-btn">➢</button>
-                            </div>
-                        </div>
-
-                        <div class="editor-code-panel">
-                            <div class="code-line-numbers">
-                                <span>30</span><span>31</span><span>32</span><span>33</span><span>34</span><span>35</span><span>36</span><span>37</span><span>38</span>
-                            </div>
-                            <pre class="code-content"><code><span class="code-keyword">export async function</span> <span class="code-func">syncBankTransactions</span>(userToken) {
-  <span class="code-keyword">const</span> encryptedData = <span class="code-keyword">await</span> <span class="code-func">fetchBankApi</span>(userToken);
-  <span class="code-keyword">const</span> transactions = <span class="code-func">decryptBankPayload</span>(encryptedData);
-
-  <span class="code-keyword">return</span> transactions.<span class="code-func">map</span>(tx => ({
-    ...tx,
-    category: <span class="code-func">autoCategorizeExpense</span>(tx.description)
-  }));
-}</code></pre>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="segmented-pill-nav">
-                    <button class="pill-nav-item active">SaaS</button>
-                    <button class="pill-nav-item">API Perbankan</button>
-                    <button class="pill-nav-item">React</button>
-                    <button class="pill-nav-item">Express</button>
-                </div>
-
-                <p class="sticky-caption-muted">
-                    Pengelolaan proyeksi arus kas dan catatan transaksi terstruktur dengan standar keamanan PCI-DSS.
-                </p>
-
             </div>
-        </section>
 
-        <!-- SECTION 5: FRONTWING WORKSPACE -->
-        <section class="sticky-project-section" id="project-5" data-project-index="4">
-            <div class="sticky-section-inner">
-                
-                <div class="sticky-header-center">
-                    <span class="sticky-project-badge">✦ PROYEK 05 // FRONTEND ENGINEERING</span>
-                    <h1 class="gradient-headline">FrontWing Workspace</h1>
-                    <p class="sticky-project-sub">
-                        Aplikasi web manajemen alur kerja dan kolaborasi tim dengan antarmuka modular responsif, papan Kanban interaktif, dan pemantauan tugas real-time.
-                    </p>
+        </article>
+
+
+        <!-- PROYEK 04: KOPI SATU CANGKIR (MOBILE APP) -->
+        <article class="zigzag-project-card reverse-layout" id="project-4" data-category="mobile">
+            
+            <!-- Kolom Informasi Konten (Kiri) -->
+            <div class="zigzag-info-col">
+                <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px;">
+                    <span class="sticky-project-badge" style="font-size: 0.72rem; padding: 3px 10px; margin-bottom: 0;">Mobile App</span>
+                </div>
+                <h2 class="zigzag-title">Kopi Satu Cangkir App</h2>
+                <p class="zigzag-subtitle">Aplikasi Flutter Android/iOS terintegrasi REST API untuk pemesanan kopi cepat.</p>
+
+                <!-- Callout Blocks dengan Garis Aksis Kiri -->
+                <div class="zigzag-callouts">
+                    <div class="zigzag-callout-item">
+                        <span class="zigzag-callout-label">LINTAS PLATFORM FLUTTER</span>
+                        <p class="zigzag-callout-text">
+                            Arsitektur aplikasi mobile Flutter dengan manajemen state Provider untuk performa 60 FPS yang mulus di platform Android maupun iOS.
+                        </p>
+                    </div>
+
+                    <div class="zigzag-callout-item">
+                        <span class="zigzag-callout-label">LOKASI GERAI REAL-TIME</span>
+                        <p class="zigzag-callout-text">
+                            Integrasi Geolocation API untuk deteksi gerai terdekat dan konfirmasi pemesanan cepat dengan antarmuka yang bersih dan ramah pengguna.
+                        </p>
+                    </div>
                 </div>
 
-                <div class="sticky-cta-row">
-                    <div class="repo-link-box">
-                        <span class="repo-icon">🔗</span>
-                        <span class="repo-text">github.com/alyadije/frontwing-workspace</span>
+                <!-- Stat Metrics Row -->
+                <div class="zigzag-stats-row">
+                    <div class="stat-box-bordered">
+                        <span class="stat-box-label">PERFORMANCE</span>
+                        <span class="stat-box-val">60 FPS Smooth</span>
                     </div>
-                    <a href="index.html#kontak" class="btn-solid-teal">
-                        Buka Workspace <span class="btn-arrow">↗</span>
+                    <div class="stat-box-bordered">
+                        <span class="stat-box-label">PLATFORM</span>
+                        <span class="stat-box-val">iOS &amp; Android</span>
+                    </div>
+                </div>
+
+                <!-- Tech Stack Pills -->
+                <div class="zigzag-tech-pills">
+                    <span class="tech-pill-box">Flutter</span>
+                    <span class="tech-pill-box">Dart</span>
+                    <span class="tech-pill-box">REST API</span>
+                    <span class="tech-pill-box">Provider</span>
+                </div>
+
+                <!-- Action Links -->
+                <div class="zigzag-actions">
+                    <a href="index.html#kontak" class="zigzag-action-link">
+                        Lihat Detail Aplikasi <span class="arrow">➔</span>
                     </a>
-                    <button class="btn-glass-secondary open-project-modal-btn"
-                            data-title="FrontWing Workspace"
-                            data-cat="Frontend Engineering"
-                            data-desc="Aplikasi web manajemen kolaborasi tim dengan papan Kanban Drag and Drop dan antarmuka modular."
-                            data-img="assets/project_frontwing.png"
-                            data-tags="Frontend,React App,Drag & Drop,Workflow">
-                        Arsitektur State
-                    </button>
                 </div>
-
-                <div class="editor-window-mockup">
-                    <div class="editor-topbar">
-                        <div class="traffic-dots">
-                            <span class="dot dot-red"></span>
-                            <span class="dot dot-yellow"></span>
-                            <span class="dot dot-green"></span>
-                        </div>
-                        <div class="editor-tabs">
-                            <div class="editor-tab active">
-                                <span class="tab-icon">📋</span> KanbanBoard.tsx <span class="tab-close">×</span>
-                            </div>
-                            <div class="editor-tab">
-                                <span class="tab-icon">⚡</span> dragDropStore.ts <span class="tab-close">×</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="editor-workspace">
-                        <div class="editor-rail">
-                            <div class="rail-icon active">📁</div>
-                            <div class="rail-icon">📌</div>
-                            <div class="rail-icon">👥</div>
-                        </div>
-
-                        <div class="editor-chat-panel">
-                            <div class="chat-header">
-                                <span class="chat-title">WORKFLOW ENGINE // COLLAB</span>
-                            </div>
-                            <div class="chat-content">
-                                <div class="chat-msg system">
-                                    <span class="msg-author">Kanban:</span>
-                                    <span>Papan Kanban aktif: 4 kolom, 18 tugas tim...</span>
-                                </div>
-                                <div class="chat-msg user">
-                                    <span class="msg-author">Alya:</span>
-                                    <span>Pindahkan kartu tugas 'Desain UI Sprint 2' ke 'In Progress'.</span>
-                                </div>
-                                <div class="chat-msg system success">
-                                    <span class="msg-author">Status:</span>
-                                    <span>✓ State berhasil diperbarui secara real-time via WebSocket.</span>
-                                </div>
-                            </div>
-                            <div class="chat-input-wrap">
-                                <input type="text" class="chat-input" value="Update status tugas Kanban team..." readonly>
-                                <button class="chat-send-btn">➢</button>
-                            </div>
-                        </div>
-
-                        <div class="editor-code-panel">
-                            <div class="code-line-numbers">
-                                <span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span>
-                            </div>
-                            <pre class="code-content"><code><span class="code-keyword">export const</span> <span class="code-func">useKanbanStore</span> = <span class="code-func">create</span>((set) => ({
-  columns: initialColumns,
-  <span class="code-func">moveTask</span>: (taskId, sourceColId, destColId) => 
-    set((state) => {
-      <span class="code-keyword">const</span> updated = <span class="code-func">reorderKanbanState</span>(state, taskId, sourceColId, destColId);
-      <span class="code-func">broadcastStateChange</span>(updated);
-      <span class="code-keyword">return</span> { columns: updated };
-    })
-}));</code></pre>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="segmented-pill-nav">
-                    <button class="pill-nav-item active">React App</button>
-                    <button class="pill-nav-item">Drag &amp; Drop</button>
-                    <button class="pill-nav-item">Kanban Board</button>
-                    <button class="pill-nav-item">WebSocket</button>
-                </div>
-
-                <p class="sticky-caption-muted">
-                    Mempermudah manajemen tugas dan alur kerja kolaboratif dengan pembaruan status tanpa henti.
-                </p>
-
             </div>
-        </section>
 
-        <!-- SECTION 6: DEARSEANA BAKERY STORE -->
-        <section class="sticky-project-section" id="project-6" data-project-index="5">
-            <div class="sticky-section-inner">
-                
-                <div class="sticky-header-center">
-                    <span class="sticky-project-badge">✦ PROYEK 06 // ECOMMERCE &amp; PAYMENT API</span>
-                    <h1 class="gradient-headline">DearSeana Bakery Store</h1>
-                    <p class="sticky-project-sub">
-                        Platform toko kuliner digital berkinerja tinggi yang terintegrasi dengan Payment Gateway MidTrans untuk pemrosesan transaksi otomatis dan notifikasi instan.
-                    </p>
+            <!-- Kolom Media Box (Kanan) -->
+            <div class="zigzag-media-col">
+                <div class="zigzag-media-box">
+                    <img src="assets/project_kivi.png" alt="Kopi Satu Cangkir App Preview" class="zigzag-media-img">
                 </div>
-
-                <div class="sticky-cta-row">
-                    <div class="repo-link-box">
-                        <span class="repo-icon">🔗</span>
-                        <span class="repo-text">github.com/alyadije/dearseana-store</span>
-                    </div>
-                    <a href="index.html#kontak" class="btn-solid-teal">
-                        Kunjungi Toko <span class="btn-arrow">↗</span>
-                    </a>
-                    <button class="btn-glass-secondary open-project-modal-btn"
-                            data-title="DearSeana Bakery Store"
-                            data-cat="Ecommerce & API"
-                            data-desc="Toko kuliner digital dengan integrasi Payment Gateway Midtrans untuk transaksi otomatis."
-                            data-img="assets/blog_art.png"
-                            data-tags="Ecommerce,Midtrans API,JavaScript,HTML5,CSS3">
-                        Integrasi Midtrans
-                    </button>
-                </div>
-
-                <div class="editor-window-mockup">
-                    <div class="editor-topbar">
-                        <div class="traffic-dots">
-                            <span class="dot dot-red"></span>
-                            <span class="dot dot-yellow"></span>
-                            <span class="dot dot-green"></span>
-                        </div>
-                        <div class="editor-tabs">
-                            <div class="editor-tab active">
-                                <span class="tab-icon">🛒</span> MidtransGateway.js <span class="tab-close">×</span>
-                            </div>
-                            <div class="editor-tab">
-                                <span class="tab-icon">🍰</span> Catalog.js <span class="tab-close">×</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="editor-workspace">
-                        <div class="editor-rail">
-                            <div class="rail-icon active">📁</div>
-                            <div class="rail-icon">🛍️</div>
-                            <div class="rail-icon">💳</div>
-                        </div>
-
-                        <div class="editor-chat-panel">
-                            <div class="chat-header">
-                                <span class="chat-title">PAYMENT GATEWAY // SNAP</span>
-                            </div>
-                            <div class="chat-content">
-                                <div class="chat-msg system">
-                                    <span class="msg-author">Midtrans:</span>
-                                    <span>Menyiapkan Snap Token untuk ID pesanan #DS-2026-09...</span>
-                                </div>
-                                <div class="chat-msg user">
-                                    <span class="msg-author">Alya:</span>
-                                    <span>Proses callback notifikasi webhook pembayaran.</span>
-                                </div>
-                                <div class="chat-msg system success">
-                                    <span class="msg-author">Status:</span>
-                                    <span>✓ Pembayaran 'SETTLEMENT' terverifikasi otomatis.</span>
-                                </div>
-                            </div>
-                            <div class="chat-input-wrap">
-                                <input type="text" class="chat-input" value="Verifikasi webhook Midtrans Snap API..." readonly>
-                                <button class="chat-send-btn">➢</button>
-                            </div>
-                        </div>
-
-                        <div class="editor-code-panel">
-                            <div class="code-line-numbers">
-                                <span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span>
-                            </div>
-                            <pre class="code-content"><code><span class="code-keyword">window</span>.snap.<span class="code-func">pay</span>(snapToken, {
-  <span class="code-func">onSuccess</span>: <span class="code-keyword">function</span>(result) {
-    <span class="code-func">updateOrderStatus</span>(result.order_id, <span class="code-string">'PAID'</span>);
-    <span class="code-func">showNotification</span>(<span class="code-string">'Pesanan berhasil dibayar!'</span>);
-  },
-  <span class="code-func">onPending</span>: <span class="code-keyword">function</span>(result) {
-    <span class="code-func">showNotification</span>(<span class="code-string">'Menunggu penyelesaian pembayaran.'</span>);
-  }
-});</code></pre>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="segmented-pill-nav">
-                    <button class="pill-nav-item active">Ecommerce</button>
-                    <button class="pill-nav-item">Midtrans API</button>
-                    <button class="pill-nav-item">JavaScript</button>
-                    <button class="pill-nav-item">Payment Snap</button>
-                </div>
-
-                <p class="sticky-caption-muted">
-                    Membuat alur pemesanan toko kuliner digital yang otomatis, aman, dan instan.
-                </p>
-
             </div>
-        </section>
+
+        </article>
+
+        <!-- Element Pemberitahuan Kosong (Kategori Tanpa Proyek) -->
+        <div id="no-projects-notice" style="text-align: center; padding: 60px 20px; color: #94a3b8; background: rgba(255,255,255,0.03); border: 1px dashed rgba(255,255,255,0.12); border-radius: 16px; margin: 20px 0; display: none;">
+            <p style="font-size: 1.1rem; font-weight: 700; color: #ffffff; margin-bottom: 8px;">Belum Ada Proyek Dalam Kategori Ini</p>
+            <p style="font-size: 0.9rem;">Proyek untuk kategori ini sedang dalam tahap riset &amp; pengujian arsitektur.</p>
+        </div>
 
     </main>
 
-    <!-- Glass Modal Detail Proyek (Dynamic Preview) -->
-    <div class="project-modal-backdrop" id="project-modal">
-        <div class="project-modal-content">
-            <button class="modal-close-btn" id="modal-close" title="Tutup Modal">✕</button>
-            <div class="modal-header-img-wrap">
-                <img src="" alt="Detail Proyek" class="modal-header-img" id="modal-img">
-            </div>
-            <div class="modal-body">
-                <span class="modal-category-tag" id="modal-cat">KATEGORI PROYEK</span>
-                <h2 class="modal-title" id="modal-title">Judul Proyek</h2>
-                <p class="modal-description" id="modal-desc">Deskripsi proyek akan ditampilkan di sini secara rinci.</p>
-                
-                <h4 class="modal-subtitle">Teknologi &amp; Stack Utama</h4>
-                <div class="modal-tech-stack" id="modal-tags">
-                    <!-- Tags generated via JS -->
-                </div>
-                
-                <div class="modal-actions">
-                    <a href="index.html#kontak" class="btn-solid-teal" id="modal-demo-link" style="padding: 12px 26px;">
-                        HUBUNGI UNTUK DEMO <span class="btn-arrow">↗</span>
-                    </a>
-                    <button class="btn-glass-secondary" id="modal-close-action" style="padding: 12px 26px;">TUTUP</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- Footer Kaki Halaman -->
 
-    <!-- Footer -->
-    <footer class="footer" style="position: relative; z-index: 100; background: #040406;">
-        <div class="footer-container">
-            <div class="footer-grid">
-                <div class="footer-brand-col">
-                    <span class="footer-logo">AD. Alya Dijayanti</span>
-                    <p class="footer-slogan">Arsitektur Perangkat Lunak &amp; Produk Digital Terukur.</p>
+    <!-- Footer Kaki Halaman -->
+    <footer class="main-footer" style="background-color: #040406; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 60px; padding: 30px 0;">
+        <div class="section-container" style="max-width: 1140px; margin: 0 auto; padding: 0 24px;">
+            <div class="footer-bottom-bar" style="color: #64748b; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+                <p><strong>AD.PORTFOLIO</strong> &nbsp;© 2026 Alya Dijayanti. Seluruh Hak Cipta Dilindungi.</p>
+                <div class="footer-legal" style="display: flex; gap: 20px;">
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" style="color: #94a3b8; text-decoration: none;">LinkedIn</a>
+                    <a href="https://github.com/alyadije" target="_blank" rel="noopener noreferrer" style="color: #94a3b8; text-decoration: none;">GitHub</a>
+                    <a href="index.html#hero" style="color: #0998a1; text-decoration: none; font-weight: 700;">Kembali ke Beranda ↑</a>
                 </div>
-
-                <div class="footer-links-col">
-                    <h4 class="footer-heading">Navigasi</h4>
-                    <ul class="footer-links">
-                        <li><a href="index.html#hero">Beranda</a></li>
-                        <li><a href="index.html#tentang">Tentang Saya</a></li>
-                        <li><a href="proyek.html">Eksplorasi Proyek</a></li>
-                        <li><a href="index.html#pengalaman">Pengalaman</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-links-col">
-                    <h4 class="footer-heading">Keahlian &amp; Github</h4>
-                    <ul class="footer-links">
-                        <li><a href="index.html#stack">Core Stack</a></li>
-                        <li><a href="index.html#github">Aktivitas GitHub</a></li>
-                        <li><a href="index.html#kapabilitas">Kapabilitas Teknis</a></li>
-                        <li><a href="index.html#kontak">Mari Terhubung</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="footer-bottom-bar">
-                <p class="copyright">© 2026 Alya Dijayanti. Hak Cipta Dilindungi.</p>
-                <p class="built-with">Dirancang dengan Presisi &amp; Stacked Sticky Engine.</p>
             </div>
         </div>
     </footer>
 
-    <script src="proyek.js?v=3.0"></script>
+    <!-- Scripts -->
+    <script src="proyek.js?v=5.0"></script>
 </body>
 
 </html>
