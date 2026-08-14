@@ -15,10 +15,10 @@ Situs web ini dirancang dengan menonjolkan estetika antarmuka yang modern, dinam
 
 Proyek ini sengaja dibangun tanpa kerangka kerja (*framework*) kelas berat untuk memaksimalkan efisiensi pemuatan halaman dan menunjukkan penguasaan kuat terhadap teknologi fundamental antarmuka pengguna (*Frontend*).
 
-- **Markup**: HTML5 Semantik
-- **Gaya (*Styling*)**: CSS3 (Vanilla)
-- **Logika & Interaktivitas**: JavaScript (Vanilla ES6+)
-- **Tipografi**: Google Fonts (Inter, Outfit, Space Grotesk, Rubik Iso)
+- **01 // Frontend Engineering**: React, Flutter, JavaScript (ES6+), HTML5, CSS3 Modern, Tailwind
+- **02 // Backend & API**: Node.js, Laravel, PHP, FastAPI, REST API, PostgreSQL, MongoDB
+- **03 // Design & Prototyping**: Figma, Framer
+- **04 // Other Tools**: Cobit 2019, Notion, Jira, Microsoft 365, Google Workspace, Git & GitHub
 
 ## 📁 Struktur Direktori
 

@@ -1168,7 +1168,7 @@ img {
 .explorations-section {
     background-color: var(--color-bg-dark);
     color: #ffffff;
-    padding: 100px 0;
+    padding: 60px 0;
     overflow: hidden;
 }
 
@@ -1313,7 +1313,7 @@ img {
 .experience-section {
     position: relative;
     overflow: hidden;
-    padding: 75px 0;
+    padding: 55px 0;
     background-color: var(--color-bg-light);
     border-bottom: 1px solid var(--color-border-light);
 }
@@ -1493,7 +1493,7 @@ img {
 .corestack-section {
     background-color: var(--color-bg-dark);
     color: #ffffff;
-    padding: 100px 0;
+    padding: 50px 0 20px 0;
 }
 
 .corestack-grid {
@@ -1593,7 +1593,7 @@ img {
 .github-section {
     background-color: #060608;
     color: #ffffff;
-    padding: 100px 0;
+    padding: 20px 0 50px 0;
     border-top: 1px solid var(--color-border-dark);
 }
 
@@ -1774,7 +1774,7 @@ img {
 .capabilities-section {
     position: relative;
     overflow: hidden;
-    padding: 75px 0 90px 0;
+    padding: 55px 0 60px 0;
     background-color: var(--color-bg-light);
 }
 
@@ -2049,7 +2049,7 @@ img {
 .connect-section {
     background-color: var(--color-bg-dark);
     color: #ffffff;
-    padding: 100px 0 70px;
+    padding: 60px 0 50px;
 }
 
 .connect-grid {
